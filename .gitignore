@@ -1,0 +1,7 @@
+node_modules/
+templates_c/*
+templates/default/src/
+tmp/*
+vendor/
+config.php
+
