@@ -1,5 +1,5 @@
 node_modules/
-templates_c/*
+templates_c/*.tpl.php
 templates/default/src/
 tmp/*
 vendor/
