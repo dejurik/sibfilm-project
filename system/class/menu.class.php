@@ -24,7 +24,7 @@ class Menu extends Alatis {
         }
 
         $SQL = "SELECT * FROM ".PREF."menu WHERE group_id = ".$id." ORDER BY parent_id, position";
-        $r = $this->db->getAssoc($SQL);
+        $r = $this->db->getAll($SQL);
 
         if (!empty($r)) {
             $rs = $this->getMenus($r);

@@ -7,16 +7,12 @@
 		<meta name="description" content="{if isset($content.meta_description)}{$content.meta_description}{else}{$config.meta_description}{/if}">
 		<meta name="author" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-
 		<link href="./templates/{$template}/css/output.css" rel="stylesheet" />
 	</head>
 
 <body>
-	<div id="loader">
-    	<img src="/templates/default/img/loading.gif">
+	<div id="loader" class="fixed hidden top-0 left-0 h-full w-full bg-white/70 z-[100]">
+    	<img class="block absolute right-1/2 top-1/2 z-[150] opacity-100" src="/templates/{$template}/images/loading.gif">
 	</div>
-	<h1 class="text-3xl font-bold underline">
-		Hello world!
-	</h1>
-
-	{include file="default/header-menu.tpl"}
+	<div class="w-full overflow-hidden">
+		{include file="default/header-menu.tpl"}

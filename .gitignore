@@ -3,5 +3,5 @@ templates_c/*.tpl.php
 templates/default/src/
 tmp/*
 vendor/
-config.php
+
 
