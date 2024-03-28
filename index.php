@@ -90,8 +90,9 @@ if(($mod = $index->validate->Get('mod', 'string'))) {
 			break;
 	}
 } else {
-		$aladesign->assign("page", $index->template."/index.tpl");
-		$aladesign->display($index->template."/main.tpl");
+	$aladesign->assign("sliders", $index->sliders->ViewRandSlider());
+	$aladesign->assign("page", $index->template."/index.tpl");
+	$aladesign->display($index->template."/main.tpl");
 }
 
 ?>

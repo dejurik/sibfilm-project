@@ -1,35 +1,71 @@
-<div class="col-12 col-sm-6 col-lg-3 col-xl-3 mb-10" data-aos="fade-up" data-aos-delay="200">
-	<div class="single-footer-widget">
-		<h2 class="widget-title">Контактная информация</h2>
-		<p class="desc-content">Описание</p>
-		<ul class="widget-address">
-			<li><span>Адрес: </span> Россия, г.Саратов, ул.Выдуманная 1</li>
-			<li><span>Телефон: </span> <a href="#"> +7 987 654-33-21</a></li>
-			<li><span>Почта: </span> <a href="#"> выдуманная@сайт.ру</a></li>
-		</ul>
-		<div class="widget-social justify-content-start mt-4">
-			<a title="Facebook" href="#"><i class="fa fa-facebook-f"></i></a>
-			<a title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
-		</div>
+<div class="bg-[#7B8384] sm:px-16 px-6 flex justify-center items-start">
+	<div class="xl:max-w-[1280px] w-full">
+
+
+		<footer class="px-4">
+
+			<div class="flex flex-col lg:flex-row justify-between py-10 mx-auto *:text-white border-b space-y-8 lg:space-y-0">
+				<div class="lg:w-2/6 grow flex space-x-3">
+
+					<div class="w-28 h-28">
+						<img src="/templates/{$template}/images/logo.svg"/>
+					</div>
+					<div class="w-48 pt-3">
+						<h3 class="uppercase">Сибирская сова</h3>
+						<p class="space-y-1 text-xs italic">Производственный организм, творческих и технологичестких процессов</p>
+					</div>
+
+				</div>
+				<div class="lg:w-4/6 grow">
+
+					<div class="grid grid-cols-4 text-sm gap-x-3 gap-y-8 max-sm:grid-cols-none">
+
+						{if $footer_menu}
+							{foreach from=$footer_menu key=key item=item}
+								<div class="space-y-3 max-sm:hidden">
+									<h3 class="uppercase">{$item.title}</h3>
+									{if isset($item.children) && is_array($item.children)}
+										<ul class="space-y-1">
+											{foreach from=$item.children key=key item=items}
+												{if !empty($items.id_item)}
+													<li><a href="{$items.url}" rel="noopener noreferrer" class="{$items.class}" target="{if $items.target eq 1}_blank{else}_self{/if}">{$items.title}</a></li>
+												{/if}
+											{/foreach}
+										</ul>
+									{/if}
+								</div>
+
+
+							{/foreach}
+						{/if}
+
+
+
+						<div class="space-y-3">
+							<div class="uppercase ">Мы в социальных сетях:</div>
+							<div class="flex justify-start space-x-2">
+								<a rel="noopener noreferrer" href="{$config.youtube}" title="youtube" class="flex items-center">
+									<img src="/templates/{$template}/images/youtube.svg" class="w-6"/>
+								</a>
+								<a rel="noopener noreferrer" href="{$config.facebook}" title="facebook" class="flex items-center">
+									<img src="/templates/{$template}/images/facebook.svg" class="w-6"/>
+								</a>
+								<a rel="noopener noreferrer" href="{$config.instagram}" title="Instagram" class="flex items-center">
+									<img src="/templates/{$template}/images/instagram.svg" class="w-6"/>
+								</a>
+								<a rel="noopener noreferrer" href="{$config.vk}" title="vk" class="flex items-center">
+									<img src="/templates/{$template}/images/vk.svg" class="w-6"/>
+								</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="py-3 text-xs text-center text-white">© 2024 Сибирская сова. All rights reserved.</div>
+
+		</footer>
+
 	</div>
 </div>
-
-{if $footer_menu}
-	{foreach from=$footer_menu key=key item=item}
-		<div class="col-12 col-sm-6 col-lg-3 col-xl-3 mb-10" data-aos="fade-up" data-aos-delay="300">
-			<div class="single-footer-widget">
-				<h2 class="widget-title">{$item.title}</h2>
-				{if isset($item.children) && is_array($item.children)}
-					<ul class="widget-list">
-						{foreach from=$item.children key=key item=items}
-							{if !empty($items.id_item)}
-								<li><a href="{$items.url}" class="{$items.class}" target="{if $items.target eq 1}_blank{else}_self{/if}">{$items.title}</a></li>
-							{/if}
-						{/foreach}
-					</ul>
-				{/if}
-				</ul>
-			</div>
-		</div>
-	{/foreach}
-{/if}

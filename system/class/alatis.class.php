@@ -15,11 +15,12 @@ class Alatis {
 		'config'		=> 'config',
 		'validate'		=> 'validate',
 		'menu'			=> 'menu',
+		'sliders'		=> 'sliders',
 		/*'pages'			=> 'pages',
 		'images'		=> 'images',
 		'users'			=> 'users',
 		'admins'		=> 'admins',
-		'sliders'		=> 'sliders',
+
 		'advertising'	=> 'advertising',
 		'categories'	=> 'categories',
 		'features'		=> 'features',
