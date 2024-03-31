@@ -7,7 +7,7 @@
 		<meta name="description" content="{if isset($content.meta_description)}{$content.meta_description}{else}{$config.meta_description}{/if}">
 		<meta name="author" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link href="./templates/{$template}/css/output.css" rel="stylesheet" />
+		<link href="/templates/{$template}/css/output.css" rel="stylesheet" />
 	</head>
 
 <body>

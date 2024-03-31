@@ -1,0 +1,20 @@
+#============================================
+# Alatis Studio Content Management System
+#--------------------------------------------
+# Copyright (c) 2024 Korshunov Aleksey
+#--------------------------------------------
+# Данный код защищен авторскими правами
+#============================================
+
+
+RewriteEngine on
+RewriteBase /admin
+
+# Авторизация
+RewriteRule ^login/$ /admin/login.php [L]
+RewriteRule ^logout/$ /admin/logout.php [L]
+
+php_value upload_max_filesize 128M
+php_value post_max_size 128M
+php_value max_execution_time 300
+php_value max_input_time 300

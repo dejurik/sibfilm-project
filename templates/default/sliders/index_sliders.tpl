@@ -5,13 +5,13 @@
 				<a href="1">
 					<video playsinline autoplay muted loop poster="{$sliders.image}"
 						   class="block z-10 w-auto my-3">
-						<source src="{$sliders.videofile}4" type="video/webm">
+						<source src="{$sliders.videofile}" type="video/webm">
 					</video>
 				</a>
 			{else}
 				<video playsinline autoplay muted loop poster="{$sliders.image}"
 					   class="block z-10 w-auto my-3">
-					<source src="{$sliders.videofile}3" type="video/webm">
+					<source src="{$sliders.videofile}" type="video/webm">
 				</video>
 			{/if}
 		</div>

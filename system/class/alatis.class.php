@@ -16,9 +16,11 @@ class Alatis {
 		'validate'		=> 'validate',
 		'menu'			=> 'menu',
 		'sliders'		=> 'sliders',
-		/*'pages'			=> 'pages',
-		'images'		=> 'images',
 		'users'			=> 'users',
+		'pages'			=> 'pages',
+		/*
+		'images'		=> 'images',
+
 		'admins'		=> 'admins',
 
 		'advertising'	=> 'advertising',
