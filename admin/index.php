@@ -13,6 +13,20 @@ chdir('..');
 require_once "vendor/autoload.php";
 include 'config.php';
 
+function console_log($data){ // сама функция
+	if(is_array($data) || is_object($data)){
+		echo("{literal}<script>console.log('php_array: ".json_encode($data)."');</script>{/literal}");
+	} else {
+		echo("{literal}<script>console.log('php_string: ".$data."');</script>{/literal}");
+	}
+}
+
+function dd($arr, $die = false){
+	echo '<pre>' . print_r($arr, true) . '</pre>';
+	if($die) die;
+}
+
+
 class AdminIndex extends Alatis {
 
 	public $user_id;
@@ -53,11 +67,11 @@ class AdminIndex extends Alatis {
 
 	$aladesign->assign("user_id", $user_id->fields);
 
-//print_r($user_id->fields);
-
 	if(isset($_GET['mod'])) {
 		switch($mod) {
-        	case $mod: include 'admin/modules/'.$mod.'/view.php';
+        	case $mod: 
+						$aladesign->assign("mod", $mod);
+						include 'admin/modules/'.$mod.'/view.php';
         	break;
 		}
 	} else {
@@ -85,8 +99,8 @@ class AdminIndex extends Alatis {
 		$view['dts_string'] = formatDataSize(disk_total_space("/"));
 
 		$aladesign->assign("view", $view);
-		$aladesign->assign("page", "file:[admin]/default/pages/view_all.tpl");
-		$aladesign->display('file:[admin]/default/main.tpl');
+		$aladesign->assign("page", "templates/admin/pages/view_all.tpl");
+		$aladesign->display('templates/admin/main.tpl');
 
 	}
 

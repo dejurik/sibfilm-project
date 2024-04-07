@@ -44,8 +44,8 @@ $alatis = new Alatis($db);
 $aladesign = new Smarty();
 $aladesign->debugging = false; // Отладка true/false
 $aladesign->caching = false; // Кэш true/false
-$aladesign->cache_lifetime = 120; // Время кэша в секундах
-$aladesign->setTemplateDir(['main' => './templates', 'admin' => './admin/templates']);
+$aladesign->cache_lifetime = 0; // Время кэша в секундах
+$aladesign->setTemplateDir(['main' => './templates/app', 'admin' => './templates/admin']);
 
 // Основные характеристики сайта
 $config = $alatis->config->View();

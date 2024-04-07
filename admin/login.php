@@ -44,5 +44,5 @@ if(isset($rs['user_id'])) {
 		exit();
 	}
 }
-$aladesign->display("admin/templates/default/login.tpl");
+$aladesign->display("templates/admin/login.tpl");
 ?>

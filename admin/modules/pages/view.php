@@ -35,8 +35,8 @@ switch($act) {
 		}
 
 		$aladesign->assign("view_all", $adminview->pages->ViewAll());
-		$aladesign->assign("page", "file:[admin]/default/pages/view_all.tpl");
-		$aladesign->display("file:[admin]/default/main.tpl");
+		$aladesign->assign("page", "templates/admin/pages/view_all.tpl");
+		$aladesign->display("templates/admin/main.tpl");
 	break;
 
 	case "page":
@@ -72,12 +72,11 @@ switch($act) {
 		}
 
 		if ($id) {
-			$page = $adminview->pages->View(array('id_item'=>$id));
-			$aladesign->assign("view", $page);
+			$aladesign->assign("view", $adminview->pages->View(array('id_item'=>$id)));
 		}
 
-		$aladesign->assign("page", "file:[admin]/default/pages/edit.tpl");
-		$aladesign->display("file:[admin]/default/main.tpl");
+		$aladesign->assign("page", "templates/admin/pages/edit.tpl");
+		$aladesign->display("templates/admin/main.tpl");
 
 	break;
 

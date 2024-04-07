@@ -1,0 +1,102 @@
+@layer base {
+
+	.dd {
+			@apply w-full relative block;
+	}
+
+	.dd-list {
+			@apply block relative m-0 p-0 list-none;
+	}
+
+	.dd-list .dd-list {
+			@apply pl-12;
+	}
+
+	.dd-empty,.dd-item,.dd-placeholder {
+			@apply block relative m-0 p-0;
+	}
+
+	.dd-handle {
+			@apply block h-[54px] my-[5px] mx-2.5 text-gray-700 no-underline border border-gray-400 bg-gray-200 box-border hover:text-blue-200 hover:bg-white;;
+	}
+
+
+	.dd-item>button {
+			@apply relative cursor-pointer float-left w-6 h-12 my-0 mx-0 p-0 indent-[100%] whitespace-nowrap overflow-hidden border-0 text-center before:block before:absolute before:w-full before:text-center before:indent-0;
+			/*background: 0 0;
+			font-size: 12px;
+			line-height: 1;
+			font-weight: 700;*/
+	}
+
+	.dd-item>button.dd-expand {
+			/*@apply before:content-[url('/templates/admin/images/plus-circle.svg')] before:w-5 before:h-5;*/
+			@apply before:content-['+'];
+	}
+
+	.dd-item>button.dd-collapse {
+			@apply before:content-['-'];
+	}
+
+	.dd-expand {
+			@apply hidden;
+	}
+
+	.dd-collapsed .dd-collapse,.dd-collapsed .dd-list {
+			@apply hidden;
+	}
+
+	.dd-collapsed .dd-expand {
+			@apply block;
+	}
+
+	.dd-empty,.dd-placeholder {
+			@apply my-[5px] mx-0 p-0 min-h-[30px] bg-sky-100 border border-dashed border-sky-600 box-border;
+	}
+
+	.dd-empty {
+			@apply border border-gray-600 min-h-[100px] bg-gray-400 bg-[length:60px_60px];
+			/*background-position: 0 0,30px 30px;*/
+	}
+
+	.dd-list.dd-dragel {
+			@apply absolute pointer-events-none z-[9999]
+	}
+
+	.dd-list.dd-dragel>.dd-item .dd-handle {
+			@apply mt-0;
+	}
+
+	.dd-list.dd-dragel .dd-handle {
+			@apply shadow-md;
+			/*box-shadow: 2px 4px 6px 0 rgba(0,0,0,.1);*/
+	}
+
+	.dd-nochildren .dd-placeholder {
+			@apply hidden;
+	}
+
+	.dd-item>.dd3-content {
+			@apply block h-[54px] my-[5px] mx-0 /*py-[5px]*/py-2.5 pl-16 pr-10 text-black no-underline leading-8
+			border border-gray-400 bg-gray-100 from-current rounded box-border hover:text-blue-400 hover:bg-gray-200;
+	}
+
+	.dd-list.dd-dragel > .dd3-item > .dd3-content {
+			@apply m-0;
+	}
+
+	.dd-item.dd3-item > button {
+			@apply ml-14;
+	}
+
+	.dd-handle.dd3-handle {
+			@apply absolute m-0 left-0 top-0 cursor-pointer w-14 indent-7 whitespace-nowrap overflow-hidden border border-gray-400 bg-gray-300 from-current rounded-l before:content-['≡'] before:text-2xl before:font-light before:block before:absolute before:top-1.5 before:left-0 before:w-full before:text-center before:indent-0 before:text-white hover:before:text-orange-600 hover:bg-orange-200 hover:border-orange-600;
+	}
+
+	.dd-handle:hover+.dd-list .dd-handle {
+			background: #FDDFB3!important;
+			border: 1px solid #FAA937;
+			color: #333!important
+	}
+
+}
