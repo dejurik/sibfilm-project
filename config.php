@@ -8,11 +8,9 @@
 ============================================*/
 
 use Smarty\Smarty;
-
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-ini_set('default_charset','utf-8');
+error_reporting (E_ALL &~ E_DEPRECATED);
+ini_set("error_reporting", E_ALL & ~E_DEPRECATED);
+//ini_set('default_charset','utf-8');
 
 // Константы
 define("DEBUG", 1);
@@ -22,6 +20,8 @@ define('PREF', 'ala_'); // Префикс таблиц
 // Подключение основных классов
 require_once('system/class/errorHandler.class.php');
 require_once('system/class/alatis.class.php');
+require_once('system/class/smarty_plugins.class.php');
+
 
 // Конфигурация БД
 $dbconn['dbhost'] = "localhost";
@@ -46,6 +46,8 @@ $aladesign->debugging = false; // Отладка true/false
 $aladesign->caching = false; // Кэш true/false
 $aladesign->cache_lifetime = 0; // Время кэша в секундах
 $aladesign->setTemplateDir(['main' => './templates/app', 'admin' => './templates/admin']);
+$aladesign->registerPlugin(Smarty::PLUGIN_FUNCTION, 'url', 'smarty_tag_url');
+
 
 // Основные характеристики сайта
 $config = $alatis->config->View();

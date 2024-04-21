@@ -14,6 +14,7 @@
     "require": {
         "smarty/smarty": "^5.0",
         "adodb/adodb-php": "5.22",
-        "uploader/uploader": "^1.4"
+        "uploader/uploader": "^1.4",
+        "phpmailer/phpmailer": "^6.9"
     }
 }

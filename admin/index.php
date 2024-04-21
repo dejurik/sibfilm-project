@@ -99,7 +99,7 @@ class AdminIndex extends Alatis {
 		$view['dts_string'] = formatDataSize(disk_total_space("/"));
 
 		$aladesign->assign("view", $view);
-		$aladesign->assign("page", "templates/admin/pages/view_all.tpl");
+		$aladesign->assign("page", "templates/admin/index.tpl");
 		$aladesign->display('templates/admin/main.tpl');
 
 	}

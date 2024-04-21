@@ -18,6 +18,8 @@ class Alatis {
 		'sliders'		=> 'sliders',
 		'users'			=> 'users',
 		'pages'			=> 'pages',
+		'feedback'		=> 'feedback',
+		'notify'		=> 'notify',
 		/*
 		'images'		=> 'images',
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.0.2, created on 2024-04-07 16:29:20
+/* Smarty version 5.0.2, created on 2024-04-21 18:38:58
   from 'file:templates/admin/main.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.2',
-  'unifunc' => 'content_66129fb03f2602_13303349',
+  'unifunc' => 'content_6625331273b440_82084126',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b79f12042eab184aadf14a88b3be311c25150931' => 
     array (
       0 => 'templates/admin/main.tpl',
-      1 => 1712496556,
+      1 => 1713693090,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_66129fb03f2602_13303349 (\Smarty\Template $_smarty_tpl) {
+function content_6625331273b440_82084126 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\admin';
 ?><!DOCTYPE HTML PUBLIC '-//W3С//DTD HTML 4.01 Transitional//EN' 'http://www.w3.org/TR/html4/loose.dtd'>
 <html>
@@ -68,6 +68,9 @@ $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\admin
 						<a href="#">Каталог</a>
 					</li>
 					<li>
+						<a href="/admin/?mod=feedback&act=view_all" class="<?php if ($_smarty_tpl->getValue('mod') && $_smarty_tpl->getValue('mod') == 'feedback') {?>text-white<?php }?>">Обратная связь</a>
+					</li>
+					<li>
 						<a href="/admin/?mod=sliders&act=view_all" class="<?php if ($_smarty_tpl->getValue('mod') && $_smarty_tpl->getValue('mod') == 'sliders') {?>text-white<?php }?>">Слайдер</a>
 					</li>
 				</ul>
@@ -87,7 +90,7 @@ $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\admin
 					</a>
 					<ul class="ml-8 mt-4 flex flex-col md:mt-0 md:flex-row md:text-sm space-x-0 md:space-x-4 lg:space-x-6 xl:space-x-8">
 						<li>
-							<a href="/admin/" class="font-medium text-gray-300">Выход</a>
+							<a href="/admin/logout/" class="font-medium text-gray-300">Выход</a>
 						</li>
 					</ul>
 				</div>
@@ -100,7 +103,6 @@ $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\admin
 	<div class="container mx-auto px-2 min-h-[calc(100vh-52px)] relative pb-14">
 		<?php $_smarty_tpl->renderSubTemplate($_smarty_tpl->getValue('page'), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 ?>
-
 
 		<div class="absolute bottom-0 left-2 right-2 block">
 			<div class="container mx-auto">
@@ -124,9 +126,14 @@ $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\admin
 	<?php echo '<script'; ?>
  src="/node_modules/tabbedcontent/dist/tabbedcontent.min.js"><?php echo '</script'; ?>
 >
+
+
 	<?php echo '<script'; ?>
  src="/node_modules/sweetalert2/dist/sweetalert2.min.js"><?php echo '</script'; ?>
 >
+	<!--<?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8"><?php echo '</script'; ?>
+>-->
 	<?php echo '<script'; ?>
  src="/node_modules/nestable2/dist/jquery.nestable.min.js"><?php echo '</script'; ?>
 >
@@ -136,6 +143,7 @@ $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\admin
 	<?php echo '<script'; ?>
  src="/templates/admin/js/main.js"><?php echo '</script'; ?>
 >
+
 </body>
 </html>
 <?php }

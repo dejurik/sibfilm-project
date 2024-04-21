@@ -1,29 +1,31 @@
 <?php
-/* Smarty version 5.0.2, created on 2024-04-07 12:00:02
+/* Smarty version 5.0.2, created on 2024-04-21 18:38:58
   from 'file:templates/admin/pages/edit.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.2',
-  'unifunc' => 'content_661260923a3d01_95097898',
+  'unifunc' => 'content_662533127d93f0_69389834',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0ac36485a2a4f02239e7115b321abd167f29b372' => 
     array (
       0 => 'templates/admin/pages/edit.tpl',
-      1 => 1712480236,
+      1 => 1713710059,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:templates/admin/floara/floara.tpl' => 1,
+    'file:templates/admin/ckeditor.tpl' => 1,
   ),
 ))) {
-function content_661260923a3d01_95097898 (\Smarty\Template $_smarty_tpl) {
+function content_662533127d93f0_69389834 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\admin\\pages';
-?><form method="post" enctype="multipart/form-data">
+$_smarty_tpl->renderSubTemplate("file:templates/admin/ckeditor.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
+?>
+<form method="post" enctype="multipart/form-data">
 
 	<div class="flex flex-wrap">
 		<div class="flex items-center py-4 w-full">
@@ -129,7 +131,7 @@ echo $_smarty_tpl->getValue('view')['url'];
 		</div>
 
 		<div class="w-3/4 bg-white shadow rounded p-4 overflow-hidden ml-2">
-			<div class="w-11/12 float-right">
+			<div class="w-12/12">
 				<textarea name="text" id="edit"><?php if ((null !== ($_smarty_tpl->getValue('view')['text'] ?? null))) {
 echo $_smarty_tpl->getValue('view')['text'];
 }?></textarea>
@@ -142,8 +144,8 @@ echo $_smarty_tpl->getValue('view')['text'];
 
 
 </form>
-<?php $_smarty_tpl->renderSubTemplate("file:templates/admin/floara/floara.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
-?>
+
+
 
 
 <?php }

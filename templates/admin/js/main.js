@@ -104,9 +104,12 @@ $(document).ready(function() {
                             Swal.fire({
                                 title: "Удалена!",
                                 text: response.message,
-                                icon: "success"
+                                icon: "success",
+                            }).then((result2) => {
+                                if (result2.isConfirmed) {
+                                    window.location.href = data_url;
+                                }
                             });
-                            window.location.href = data_url;
                         }
                     },
                     error: function (xhr, status, error) {

@@ -7,6 +7,12 @@
 		<meta name="description" content="{if isset($content.meta_description)}{$content.meta_description}{else}{$config.meta_description}{/if}">
 		<meta name="author" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/templates/app/{$template}/images/icons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/templates/app/{$template}/images/icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/templates/app/{$template}/images/icons/favicon-16x16.png">
+		<link rel="manifest" href="/templates/app/{$template}/images/icons/site.webmanifest">
+
 		<link href="/templates/css/output.css" rel="stylesheet" />
 	</head>
 

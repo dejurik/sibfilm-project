@@ -1,3 +1,4 @@
+{include file="templates/admin/ckeditor.tpl"}
 <form method="post" enctype="multipart/form-data">
 
 	<div class="flex flex-wrap">
@@ -92,7 +93,7 @@
 		</div>
 
 		<div class="w-3/4 bg-white shadow rounded p-4 overflow-hidden ml-2">
-			<div class="w-11/12 float-right">
+			<div class="w-12/12">
 				<textarea name="text" id="edit">{if isset($view.text)}{$view.text}{/if}</textarea>
 			</div>
 		</div>
@@ -103,6 +104,8 @@
 
 
 </form>
-{include file="templates/admin/floara/floara.tpl"}
+
+{*{include file="templates/admin/floara/floara.tpl"}*}
+
 
 

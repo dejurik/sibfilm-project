@@ -1,0 +1,64 @@
+    .servise_contanner{
+        @apply w-full sm:grid sm:grid-rows-2 sm:grid-flow-col sm:gap-4 max-sm:flex max-sm:flex-col;
+    }
+
+    .servise_lite,
+    .servise_default,
+    .servise_full,
+    .servise_other {
+        @apply max-sm:my-4;
+    }
+
+    .servise_lite {
+        @apply col-span-2;
+    }
+
+    .servise_other {
+        @apply row-span-2;
+    }
+
+    .servise_other>a>div,
+    .servise_full>a>div,
+    .servise_default>a>div,
+    .servise_lite>a>div{
+        @apply h-60 rounded-lg relative block bg-right bg-no-repeat max-md:bg-none;
+    }
+
+    .servise_lite>a>div{
+        @apply bg-[#34445d] bg-[url('/templates/app/default/images/service_lite.jpg')];
+    }
+
+    .servise_default>a>div {
+        @apply bg-[#34445C] bg-[url('/templates/app/default/images/service_default.jpg')];
+    }
+
+    .servise_full>a>div {
+        @apply bg-[#34445d] bg-[url('/templates/app/default/images/service_full.jpg')];
+    }
+
+    .servise_other>a>div {
+        @apply bg-[#34445C] h-full max-sm:h-60 bg-[url('/templates/app/default/images/service_additionally.jpg')];
+    }
+
+    .servise_header {
+        @apply absolute bottom-7 left-7;
+    }
+
+    .servise_default>a>div>.servise_header,
+    .servise_other>a>div>.servise_header {
+        @apply *:text-[#34445d];
+    }
+
+    .servise_full>a>div>.servise_header,
+    .servise_lite>a>div>.servise_header {
+        @apply *:text-white;
+    }
+
+    .servise_title {
+        @apply text-2xl font-bold underline max-md:text-base;
+    }
+
+    .servise_desc {
+        @apply text-sm hidden lg:block;
+    }
+

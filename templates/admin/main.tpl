@@ -44,6 +44,9 @@
 						<a href="#">Каталог</a>
 					</li>
 					<li>
+						<a href="/admin/?mod=feedback&act=view_all" class="{if $mod && $mod eq 'feedback'}text-white{/if}">Обратная связь</a>
+					</li>
+					<li>
 						<a href="/admin/?mod=sliders&act=view_all" class="{if $mod && $mod eq 'sliders'}text-white{/if}">Слайдер</a>
 					</li>
 				</ul>
@@ -60,7 +63,7 @@
 					</a>
 					<ul class="ml-8 mt-4 flex flex-col md:mt-0 md:flex-row md:text-sm space-x-0 md:space-x-4 lg:space-x-6 xl:space-x-8">
 						<li>
-							<a href="/admin/" class="font-medium text-gray-300">Выход</a>
+							<a href="/admin/logout/" class="font-medium text-gray-300">Выход</a>
 						</li>
 					</ul>
 				</div>
@@ -72,7 +75,6 @@
 
 	<div class="container mx-auto px-2 min-h-[calc(100vh-52px)] relative pb-14">
 		{include file=$page}
-
 
 		<div class="absolute bottom-0 left-2 right-2 block">
 			<div class="container mx-auto">
@@ -88,9 +90,13 @@
 	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="/node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
 	<script src="/node_modules/tabbedcontent/dist/tabbedcontent.min.js"></script>
+
+
 	<script src="/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+	<!--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8"></script>-->
 	<script src="/node_modules/nestable2/dist/jquery.nestable.min.js"></script>
 	<script src="/node_modules/jquery-modal/jquery.modal.min.js"></script>
 	<script src="/templates/admin/js/main.js"></script>
+
 </body>
 </html>

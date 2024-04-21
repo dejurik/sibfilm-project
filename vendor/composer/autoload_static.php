@@ -25,6 +25,7 @@ class ComposerStaticInit8951dcb0c7598f9157a93f97e775a4d4
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'D' => 
         array (
@@ -48,6 +49,10 @@ class ComposerStaticInit8951dcb0c7598f9157a93f97e775a4d4
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Dejur\\SibfilmLocal\\' => 
         array (

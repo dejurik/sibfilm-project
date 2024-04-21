@@ -168,7 +168,7 @@ class Users extends Alatis {
 		if ($user_id == null) {
 			return false;
 		}
-		$SQL = "SELECT p.name FROM ".PREF."privs2rol p2r
+		$SQL = "SELECT p.name FROM ".PREF."privs2rol p2r 
 					LEFT JOIN ".PREF."users u ON u.role_id = p2r.id_role
 					LEFT JOIN ".PREF."privilegies p ON p.id_item = p2r.id_priv 
 				WHERE u.id_item = ".$user_id;
@@ -181,7 +181,10 @@ class Users extends Alatis {
 		return $access;
 	}
 
-
+	public function Logout() {
+		$this->sid = null;
+		$this->uid = null;
+	}
 
 
 
@@ -215,7 +218,7 @@ class Users extends Alatis {
 
 
 
-
+/*
 	public function CanTo($priv, $id_admin = null)
 	{
 		if ($id_admin == null) {
@@ -231,8 +234,8 @@ class Users extends Alatis {
 
 		$rs = $this->db->Execute($SQL);
 		return ($rs->fields['cnt'] > 0);
-	}
-
+	}*/
+/*
 	public function IsOnline($id_admin) {
 		if ($this->onlineMap == null) {
 		    $SQL = "SELECT DISTINCT id_admin FROM ".PREF."".$this->table_ses."";
@@ -244,12 +247,7 @@ class Users extends Alatis {
 		}
 		return ($this->onlineMap[$id_admin] != null);
 	}
-
-
-	public function Logout() {
-		$this->sid = null;
-		$this->uid = null;
-	}
+*/
 
 
 
@@ -277,6 +275,8 @@ class Users extends Alatis {
 
 
 
+
+/*
     public function View() {
 		$SQL = "SELECT 
 					id_admin,
@@ -290,8 +290,8 @@ class Users extends Alatis {
 				FROM ".PREF."".$this->table."";
 		$rs = $this->db->Execute($SQL);
 		return $rs;
-    }
-
+    }*/
+/*
   	public function Add() {
       	$SQL = "INSERT ".PREF."".$this->table." SET 
       				login = '".$this->login."', 
@@ -303,7 +303,7 @@ class Users extends Alatis {
       				regdate = '".$this->regdate."'";
 		$rs = $this->db->Execute($SQL);
    	}
-
+*//*
    	public function EditView($id_admin) {
 		$SQL = "SELECT 
 					login, 
@@ -315,7 +315,7 @@ class Users extends Alatis {
 		$rs = $this->db->Execute($SQL);
 		return $rs;
    	}
-
+*//*
    	public function Edit($id_admin) {
       	$SQL = "UPDATE ".PREF."".$this->table." SET 
       				login = '".$this->login."', 
@@ -327,7 +327,7 @@ class Users extends Alatis {
       			WHERE id_admin = ".$id_admin;
 		$rs = $this->db->Execute($SQL);
    	}
-
+*//*
    	public function Delete($id_admin) {
       	$SQL = "DELETE FROM ".PREF."".$this->table." WHERE id_admin = ".$id_admin." LIMIT 1";
 		$rs = $this->db->Execute($SQL);
@@ -337,7 +337,7 @@ class Users extends Alatis {
       	$SQL = "DELETE FROM ".PREF."".$this->table." WHERE id_admin IN(".$delete_all.")";
 		$rs = $this->db->Execute($SQL);
    	}
-
+*/
 }
 
 ?>

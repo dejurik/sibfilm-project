@@ -1,5 +1,6 @@
 @import "nestable.css";
 @import "modals.css";
+@import "services.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

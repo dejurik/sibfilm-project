@@ -4,11 +4,11 @@
 			<div class="">
 				<div class="flex flex-wrap justify-between">
 					<div class="items-center ">
-						<h1 class="font-semibold text-xl mb-1 block">Страницы</h1>
-						<span class="text-gray-500 text-xs font-semibold mr-2 py-0.5">Создание/редактиование статичных страниц</span>
+						<h1 class="font-semibold text-xl mb-1 block">Рабочий стол</h1>
+						<span class="text-gray-500 text-xs font-semibold mr-2 py-0.5">Будем отображать нужные виджеты для статистики.</span>
 					</div>
 					<div class="flex items-center">
-						<a href="#" class="px-3 py-2 lg:px-4 bg-blue-500 text-white text-sm font-semibold rounded hover:bg-blue-600">Создать страницу</a>
+						<a href="#" class="px-3 py-2 lg:px-4 bg-blue-500 text-white text-sm font-semibold rounded hover:bg-blue-600">Создать </a>
 					</div>
 				</div>
 			</div>
@@ -91,7 +91,6 @@
 					</tbody>
 				</table>
 			</div>
-
 		</div>
 	</div>
 </div>
