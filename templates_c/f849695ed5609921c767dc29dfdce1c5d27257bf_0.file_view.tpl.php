@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.0.2, created on 2024-04-22 16:40:33
+/* Smarty version 5.0.2, created on 2024-04-22 20:59:45
   from 'file:[main]/default/pages/view.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.2',
-  'unifunc' => 'content_662668d1706be7_84220055',
+  'unifunc' => 'content_6626a5911a4cd2_08778478',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f849695ed5609921c767dc29dfdce1c5d27257bf' => 
     array (
       0 => '[main]/default/pages/view.tpl',
-      1 => 1713793110,
+      1 => 1713808576,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:default/feedback/feedback_form.tpl' => 1,
   ),
 ))) {
-function content_662668d1706be7_84220055 (\Smarty\Template $_smarty_tpl) {
+function content_6626a5911a4cd2_08778478 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\app\\\\default\\pages';
 ?><div class="sm:px-16 px-6 flex justify-center items-center bg-gradient-to-b from-[#cccccc]/5">
 	<div class="xl:max-w-[1280px] w-full">

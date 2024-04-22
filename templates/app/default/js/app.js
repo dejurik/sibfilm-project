@@ -10,12 +10,6 @@ $( document ).ready(function () {
     });
 
 
-
-
-
-
-
-
 });
 
 var menu = document.getElementById('menu');
