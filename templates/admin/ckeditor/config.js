@@ -8,23 +8,18 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'clipboard', items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
 		{ name: 'editing', items: [ 'Scayt' ] },
 		{ name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
-		{ name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar', 'Youtube' ] },
+		{ name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar', 'Iframe', 'Youtube' ] },
 		{ name: 'tools', items: [ 'Maximize' ] },
-		{ name: 'document', items: [ 'Source', '-', 'ExportPdf' ] },
+		{ name: 'document', items: [ 'Source', '-', 'ExportPdf', '-', 'Templates' ] },
 		'/',
 		{ name: 'basicstyles', items: [ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ] },
 		{ name: 'paragraph', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] },
-		{ name: 'styles', items: [ 'Format', 'Font', 'FontSize' ] },
+		{ name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
 		{ name: 'colors', items: [ 'TextColor', 'BGColor' ] }
 	];
 
-	// Remove some buttons provided by the standard plugins, which are
-	// not needed in the Standard(s) toolbar.
+	config.allowedContent = true;
 	config.removeButtons = 'Subscript,Superscript';
-
-	// Set the most common block elements.
-
-
-	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+	config.contentsCss = '/templates/css/output.css';
 };

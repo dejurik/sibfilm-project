@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.0.2, created on 2024-04-21 18:41:13
+/* Smarty version 5.0.2, created on 2024-04-22 15:17:44
   from 'file:templates/admin/ckeditor.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.2',
-  'unifunc' => 'content_66253399bb51d5_07695062',
+  'unifunc' => 'content_662655686c1cf3_36384073',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '65d8a9988dd5aae77e2a7a34ecfcc67c7289de8b' => 
     array (
       0 => 'templates/admin/ckeditor.tpl',
-      1 => 1713713996,
+      1 => 1713788172,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_66253399bb51d5_07695062 (\Smarty\Template $_smarty_tpl) {
+function content_662655686c1cf3_36384073 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\admin';
 echo '<script'; ?>
  src="/templates/admin/ckeditor/ckeditor.js"><?php echo '</script'; ?>
@@ -45,6 +45,7 @@ echo '<script'; ?>
             removeDialogTabs: 'image:advanced;link:advanced',
             height: 450,
             removeButtons: 'PasteFromWord'
+
         });
 
         //CKFinder.setupCKEditor( editor );

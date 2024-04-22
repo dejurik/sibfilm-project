@@ -1,5 +1,20 @@
 $( document ).ready(function () {
 
+    $('.popup-gallery').magnificPopup({
+        type:'image',
+        gallery: {
+            enabled: true,
+            navigateByImgClick: true,
+            preload: [0,1]
+        },
+    });
+
+
+
+
+
+
+
 
 });
 

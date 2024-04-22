@@ -18,6 +18,7 @@
             removeDialogTabs: 'image:advanced;link:advanced',
             height: 450,
             removeButtons: 'PasteFromWord'
+
         });
 
         //CKFinder.setupCKEditor( editor );

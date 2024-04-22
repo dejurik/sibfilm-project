@@ -13,10 +13,10 @@
  * (1) https://ckeditor.com/cke4/builder
  *     Visit online builder to build CKEditor from scratch.
  *
- * (2) https://ckeditor.com/cke4/builder/4e82da6f48ae58ec6cecd1c6d40f6e5c
+ * (2) https://ckeditor.com/cke4/builder/fe6338062b3f6e0e412f0ce3464e7ded
  *     Visit online builder to build CKEditor, starting with the same setup as before.
  *
- * (3) https://ckeditor.com/cke4/builder/download/4e82da6f48ae58ec6cecd1c6d40f6e5c
+ * (3) https://ckeditor.com/cke4/builder/download/fe6338062b3f6e0e412f0ce3464e7ded
  *     Straight download link to the latest version of CKEditor (Optimized) with the same setup as before.
  *
  * NOTE:
@@ -56,11 +56,11 @@ var CKBUILDER_CONFIG = {
 	],
 	plugins : {
 		'a11yhelp' : 1,
-		'about' : 1,
 		'basicstyles' : 1,
 		'blockquote' : 1,
 		'clipboard' : 1,
 		'colorbutton' : 1,
+		'colordialog' : 1,
 		'contextmenu' : 1,
 		'elementspath' : 1,
 		'enterkey' : 1,
@@ -72,6 +72,7 @@ var CKBUILDER_CONFIG = {
 		'format' : 1,
 		'horizontalrule' : 1,
 		'htmlwriter' : 1,
+		'iframe' : 1,
 		'image' : 1,
 		'image2' : 1,
 		'indentlist' : 1,
@@ -80,6 +81,8 @@ var CKBUILDER_CONFIG = {
 		'list' : 1,
 		'magicline' : 1,
 		'maximize' : 1,
+		'pastefromgdocs' : 1,
+		'pastefromlibreoffice' : 1,
 		'pastefromword' : 1,
 		'pastetext' : 1,
 		'removeformat' : 1,
@@ -91,9 +94,9 @@ var CKBUILDER_CONFIG = {
 		'stylescombo' : 1,
 		'tab' : 1,
 		'table' : 1,
-		'tableresize' : 1,
 		'tableselection' : 1,
 		'tabletools' : 1,
+		'templates' : 1,
 		'toolbar' : 1,
 		'undo' : 1,
 		'uploadimage' : 1,

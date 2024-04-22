@@ -1,6 +1,7 @@
 @import "nestable.css";
 @import "modals.css";
 @import "services.css";
+@import "../../node_modules/magnific-popup/dist/magnific-popup.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
