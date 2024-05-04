@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.0.2, created on 2024-04-21 18:38:58
+/* Smarty version 5.0.2, created on 2024-05-02 15:19:16
   from 'file:templates/admin/main.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.2',
-  'unifunc' => 'content_6625331273b440_82084126',
+  'unifunc' => 'content_663384c4477ee3_89930162',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b79f12042eab184aadf14a88b3be311c25150931' => 
     array (
       0 => 'templates/admin/main.tpl',
-      1 => 1713693090,
+      1 => 1714652207,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6625331273b440_82084126 (\Smarty\Template $_smarty_tpl) {
+function content_663384c4477ee3_89930162 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\admin';
 ?><!DOCTYPE HTML PUBLIC '-//W3С//DTD HTML 4.01 Transitional//EN' 'http://www.w3.org/TR/html4/loose.dtd'>
 <html>
@@ -62,7 +62,7 @@ $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\admin
 						<a href="/admin/?mod=pages&act=view_all" class="<?php if ($_smarty_tpl->getValue('mod') && $_smarty_tpl->getValue('mod') == 'pages') {?>text-white<?php }?>">Страницы</a>
 					</li>
 					<li>
-						<a href="#">Проекты</a>
+						<a href="/admin/?mod=projects&act=view_all" class="<?php if ($_smarty_tpl->getValue('mod') && $_smarty_tpl->getValue('mod') == 'projects') {?>text-white<?php }?>">Проекты</a>
 					</li>
 					<li>
 						<a href="#">Каталог</a>
@@ -127,13 +127,16 @@ $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\admin
  src="/node_modules/tabbedcontent/dist/tabbedcontent.min.js"><?php echo '</script'; ?>
 >
 
+	<?php echo '<script'; ?>
+ src="/templates/admin/js/cropper/scripts/jquery.Jcrop.min.js"><?php echo '</script'; ?>
+>
+	<?php echo '<script'; ?>
+ src="/templates/admin/js/cropper/scripts/jquery.SimpleCropper.js"><?php echo '</script'; ?>
+>
 
 	<?php echo '<script'; ?>
  src="/node_modules/sweetalert2/dist/sweetalert2.min.js"><?php echo '</script'; ?>
 >
-	<!--<?php echo '<script'; ?>
- src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8"><?php echo '</script'; ?>
->-->
 	<?php echo '<script'; ?>
  src="/node_modules/nestable2/dist/jquery.nestable.min.js"><?php echo '</script'; ?>
 >

@@ -25,7 +25,7 @@ switch($act) {
 			$action = $adminview->validate->Post('action', 'string');
 			if(!empty($id)) {
 				if ($action == 'delete') {
-					$adminview->pages->DeletePagesId($id);
+					$adminview->pages->DeletePageId($id);
 					echo json_encode(array('success'=>true, 'message'=>'Страница удалена!'));
 					exit();
 				}

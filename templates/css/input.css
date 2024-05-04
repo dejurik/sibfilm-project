@@ -1,7 +1,15 @@
 @import "nestable.css";
 @import "modals.css";
 @import "services.css";
+@import "cropper.css";
 @import "../../node_modules/magnific-popup/dist/magnific-popup.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    p {
+        @apply leading-6 mb-2;
+    }
+}

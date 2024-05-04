@@ -82,7 +82,7 @@ $(document).ready(function() {
         const id_item = $(this).attr("data-id");
         const title = $(this).attr("data-title");
         const data_url = $(this).attr("data-url");
-				const action = $(this).attr("data-action");
+		const action = $(this).attr("data-action");
         Swal.fire({
             title: "Вы уверены?",
             html: `Высобираетесь удалить <br/><b>${title}</b>`,
@@ -133,13 +133,13 @@ $(document).ready(function() {
         updateOutput($("#sort_menu").data('output', $('#nestable-output')));
     }
 
-
-
-
-   /* $('.dd').nestable({group : 0}).on('change', function (e){
-        var list = e.length ? e : $(e.target), output = list.data('output');
-        $('#nestable-output').val(JSON.stringify(list.nestable('serialize')));
-    });*/
+    // Добавление нового свойства товара
+    var feature = $('#new_feature').clone(true);
+    $('#new_feature').remove().removeAttr('id');
+    $('#addFeature').click(function () {
+        $(feature).clone(true).appendTo('div.new_features').fadeIn('slow');
+        return false;
+    });
 
 
 

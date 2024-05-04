@@ -27,21 +27,24 @@ $("#form_feedback").validate({
             email: true
         },
         privacy: "required",
+        captcha: "required",
     },
     // Specify validation error messages
     messages: {
         name: "Пожалуйста, введите ваше имя",
         phone: "Пожалуйста, введите ваш телефон",
         privacy: "Пожалуйста, подтвердите отправку персональных данных",
-        email: "Пожалуйста, введите ваше имя email"
+        email: "Пожалуйста, введите ваше имя email",
+        captcha: "Введите защитный код"
     },
-    errorClass: "border-red-500 text-red-500 text-xs italic order-1",
+    errorClass: "border-red-500 text-red-500 italic order-1",
     errorElement: "p",
 
     // Make sure the form is submitted to the destination defined
     // in the "action" attribute of the form when valid
     submitHandler: function(form) {
         var formData = new FormData(form);
+        $('#feedback_result').removeClass("border-[#34445d] bg-[#979eab] border-[#7a5050] bg-[#d59595]").addClass("hidden");
         $.ajax({
             url: '/?mod=feedback&act=create_ticket',
             type: 'POST',
@@ -60,7 +63,7 @@ $("#form_feedback").validate({
                     $('#feedback_result').addClass("border-[#7a5050] bg-[#d59595]");
                     $('#feedback_result').removeClass("hidden");
                     $('#feedback_result').children().html(response.message);
-                    location.reload();
+                    //location.reload();
                 }
             },
             error: function (xhr, status, error) {
@@ -73,5 +76,3 @@ $("#form_feedback").validate({
        // form.submit();
     }
 });
-
-

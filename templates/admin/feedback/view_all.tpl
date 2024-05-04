@@ -8,7 +8,7 @@
                         <span class="text-gray-500 text-xs font-semibold mr-2 py-0.5">Просмотр/удаление сообщений</span>
                     </div>
                     <div class="flex items-center">
-                        <a href="/admin/?mod=pages&act=page" class="px-3 py-2 lg:px-4 bg-blue-500 text-white text-sm font-semibold rounded hover:bg-blue-600">Создать страницу</a>
+                        <a href="/admin/?mod=feedback&act=comment" class="px-3 py-2 lg:px-4 bg-blue-500 text-white text-sm font-semibold rounded hover:bg-blue-600">Создать сообщение</a>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                 <table class="min-w-full">
                     <thead class="bg-gray-50">
                     <tr>
-                        <th scope="col" class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 uppercase w-6/12">
+                        <th scope="col" class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 uppercase w-5/12">
                             Сообщение
                         </th>
                         <th scope="col" class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 uppercase w-1/12">
@@ -35,12 +35,18 @@
                             email
                         </th>
                         <th scope="col" class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 uppercase w-1/12">
+                            Телефон
+                        </th>
+                        <th scope="col" class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 uppercase w-1/12">
                             Дата создания
                         </th>
                         <th scope="col" class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 uppercase w-1/12">
                             IP адрес
                         </th>
-                        <th scope="col" class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 uppercase w-2/12"></th>
+                        <th scope="col" class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 uppercase w-1/12">
+                            Раздел
+                        </th>
+                        <th scope="col" class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 uppercase w-1/12"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -57,14 +63,20 @@
                                 {$item.email}
                             </td>
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap">
+                                {$item.phone}
+                            </td>
+                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap">
                                 {$item.created}
                             </td>
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap inline-flex items-center mt-2">
                                 {$item.last_ip}
                             </td>
+                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap">
+                                {$item.module}
+                            </td>
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap text-right">
 
-                                <a href="/admin/?mod=pages&act=feedback&id={$item.id_item}" class="inline-flex items-center px-2 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">
+                                <a href="/admin/?mod=feedback&act=comment&id={$item.id_item}" class="inline-flex items-center px-2 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                                     </svg>

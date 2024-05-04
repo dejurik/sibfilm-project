@@ -58,7 +58,7 @@ class Pages extends Alatis {
         return $lastId;
     }
 
-    public function DeletePagesId($id_item) {
+    public function DeletePageId($id_item) {
         $SQL = "DELETE FROM ".PREF."pages WHERE id_item IN (".$id_item.")";
         $this->db->execute($SQL);
     }

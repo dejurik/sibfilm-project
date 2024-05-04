@@ -7,74 +7,14 @@
 #============================================
 RewriteEngine on
 
+ErrorDocument 404 /?mod=pages&act=404
+
 # каптча
-RewriteRule ^image.jpg$ /system/class/captcha.php [L]
+RewriteRule ^image.php$ /system/class/captcha.php [L]
 
 # страницы
 RewriteRule ^pages/([^/]*)$ /?mod=pages&act=view&url=$1 [L]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-RewriteRule ^users?$ /?mod=users&act=index [L,QSA]
-RewriteRule ^users/login?$ /?mod=users&act=login [L]
-RewriteRule ^users/orders?$ /?mod=users&act=orders [L,QSA]
-RewriteRule ^users/profile?$ /?mod=users&act=profile [L]
-
-RewriteRule ^users/logout?$	/?mod=users&act=logout [L]
-RewriteRule ^users/notify?$ /?mod=users&act=notify [L,QSA]
-RewriteRule ^users/myorders?$ /?mod=users&act=myorders [L]
-RewriteRule ^users/neighbour?$ /?mod=users&act=neighbour [L,QSA]
-RewriteRule ^users/add_order?$ /?mod=users&act=add_order [L]
-RewriteRule ^users/del_order/([^/]*)$ /?mod=users&act=del_order&id=$1 [L]
-RewriteRule ^users/view_order/([^/]*)$ /?mod=users&act=view_order&id=$1 [L]
-RewriteRule ^users/registration?$ /?mod=users&act=registration [L]
-RewriteRule ^users/conversations?$ /?mod=users&act=conversations [L]
-RewriteRule ^users/password_remind?$ /?mod=users&act=password_remind [L,QSA]
-RewriteRule ^users/delneighbour/([^/]*)$ /?mod=users&act=delneighbour&id=$1 [L]
-RewriteRule ^users/del_conversation/([^/]*)$ /?mod=users&act=del_conversation&id=$1 [L]
-RewriteRule ^users/view_conversation/([^/]*)$ /?mod=users&act=view_conversation&id=$1 [L]
-RewriteRule ^users/create_conversation/([^/]*)$ /?mod=users&act=create_conversation&id=$1 [L]
-
-# Каталог
-RewriteRule ^catalog?$ /?mod=catalog&act=view_all [L,QSA]
-RewriteRule ^catalog/addflat?$ /?mod=catalog&act=edit [L]
-RewriteRule ^catalog/edit/([^/]*)$ /?mod=catalog&act=edit&id=$1 [L]
-RewriteRule ^catalog/view/([^/]*)$ /?mod=catalog&act=view&id=$1 [L]
-RewriteRule ^catalog/user/([^/]*)$ /?mod=catalog&act=user&id=$1 [L,QSA]
-RewriteRule ^catalog/delete/([^/]*)$ /?mod=catalog&act=delete&id=$1 [L]
-#RewriteRule ^catalog/ajaxUpload?$ /?mod=catalog&act=ajaxUpload [L]
-#RewriteRule ^catalog/ajaxDelete?$ /?mod=catalog&act=ajaxDelete [L,QSA]
-#RewriteRule ^catalog/ajaxSave?$ /?mod=catalog&act=ajaxSaveImage [L,QSA]
-
-#RewriteRule ^content?$ /?mod=content&act=view_all [L,QSA]
-#RewriteRule ^content/search?$ /?mod=content&act=search [L,QSA]
-#RewriteRule ^content/([^/]*)?$ /?mod=content&act=view_all&url_category=$1 [L,QSA]
-#RewriteRule ^content/view/([^/]*)$ /?mod=content&act=view&url=$1 [L]
-#RewriteRule ^content/calendar/?$ /?mod=content&act=calendar [L]
-#RewriteRule ^content/calendar/([^/]*)-([^/]*)-([^/]*)?$ /?mod=content&act=calendar&year=$1&month=$2&today=$3 [L]
-
-
-<filesMatch ".(jpg|jpeg|png|gif)$">
-Header set Cache-Control "max-age=86400, public"
-</filesMatch>
+# проекты
+RewriteRule ^projects?$ /?mod=projects&act=view_all [L,QSA]
+RewriteRule ^projects/([^/]*)$ /?mod=projects&act=view&url=$1 [L]

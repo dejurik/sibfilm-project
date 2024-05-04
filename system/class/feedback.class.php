@@ -13,8 +13,16 @@ class Feedback extends Alatis {
 		parent::__construct($db);
 	}
 
-    public function Count() {
-        $SQL = "SELECT COUNT(DISTINCT id_item) as count FROM ".PREF."feedback";
+    public function Count($filter) {
+        $module_filter = '';
+        $status_filter = '';
+        if(isset($filter['module'])) {
+            $module_filter = "AND module = '".$filter['module']."'";
+        }
+        if(isset($filter['visible'])) {
+            $status_filter = "AND visible = '".$filter['visible']."'";
+        }
+        $SQL = "SELECT COUNT(DISTINCT id_item) as count FROM ".PREF."feedback WHERE 1 $module_filter $status_filter";
         return $this->db->getRow($SQL);
     }
 
@@ -22,7 +30,18 @@ class Feedback extends Alatis {
         // По умолчанию
         $limit = 10;
         $page = 1;
-
+        $module_filter = '';
+        $page_id_filter = '';
+        $status_filter = '';
+        if(isset($filter['visible'])) {
+            $status_filter = "AND visible = '".$filter['visible']."'";
+        }
+        if(isset($filter['module'])) {
+            $module_filter = "AND module = '".$filter['module']."'";
+        }
+        if(isset($filter['page_id'])) {
+            $page_id_filter = "AND page_id = '".$filter['page_id']."'";
+        }
         if(isset($filter['limit'])) {
             $limit = max(1, intval($filter['limit']));
         }
@@ -32,7 +51,7 @@ class Feedback extends Alatis {
 
         $sql_limit = " LIMIT ".($page-1)*$limit.", ".$limit."";
 
-        $SQL = "SELECT * FROM ".PREF."feedback ORDER BY created DESC $sql_limit";
+        $SQL = "SELECT * FROM ".PREF."feedback WHERE 1 $status_filter $module_filter $page_id_filter ORDER BY created DESC $sql_limit";
         return $this->db->getAll($SQL);
     }
 
@@ -43,6 +62,19 @@ class Feedback extends Alatis {
 
     public function Add($data) {
         $this->db->AutoExecute(PREF."feedback", $data, 'INSERT');
+        return $this->db->insert_Id();
     }
+
+    public function View($id) {
+        $SQL = "SELECT * FROM ".PREF."feedback WHERE id_item = ".$id;
+        return $this->db->getRow($SQL);
+    }
+
+    public function UpdateCommentId($id, $data) {
+        $this->db->AutoExecute(PREF."feedback", $data, 'UPDATE', 'id_item='.$id);
+    }
+
+
+
 
 }

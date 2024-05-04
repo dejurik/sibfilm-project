@@ -12,6 +12,10 @@ if(!isset($access['VIEW_FEEDBACK'])) {
     die();
 }
 
+if($adminview->validate->method('get')) {
+    $id = $adminview->validate->Get('id', 'integer');
+}
+
 switch($act) {
 
 	case "view_all":
@@ -49,5 +53,32 @@ switch($act) {
         $aladesign->assign("page", "templates/admin/feedback/view_all.tpl");
         $aladesign->display("templates/admin/main.tpl");
 	break;
+
+    case "comment":
+
+        if($adminview->validate->method('post')) {
+
+            $data_id = $adminview->validate->Post('id_item', 'integer');
+
+            $data_comment['name'] = $adminview->validate->Post('name');
+            $data_comment['email'] = $adminview->validate->Post('email');
+            $data_comment['phone'] = $adminview->validate->Post('phone');
+            $data_comment['message'] = $adminview->validate->Post('message');
+            $data_comment['module'] = $adminview->validate->Post('module');
+            $data_comment['page_id'] = $adminview->validate->Post('page_id');
+            $data_comment['visible'] = $adminview->validate->Post('visible') ? 1 : 0;
+
+            if ($data_id) {
+                $adminview->feedback->UpdateCommentId($data_id, $data_comment);
+            } else {
+                $data_id = $adminview->feedback->Add($data_comment);
+            }
+            $adminview->validate->Locate("/admin/?mod=feedback&act=comment&id=".$data_id);
+        }
+
+        $aladesign->assign("view", $adminview->feedback->View($id));
+        $aladesign->assign("page", "templates/admin/feedback/edit.tpl");
+        $aladesign->display("templates/admin/main.tpl");
+    break;
 
 }

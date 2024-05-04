@@ -38,7 +38,7 @@
 						<a href="/admin/?mod=pages&act=view_all" class="{if $mod && $mod eq 'pages'}text-white{/if}">Страницы</a>
 					</li>
 					<li>
-						<a href="#">Проекты</a>
+						<a href="/admin/?mod=projects&act=view_all" class="{if $mod && $mod eq 'projects'}text-white{/if}">Проекты</a>
 					</li>
 					<li>
 						<a href="#">Каталог</a>
@@ -91,9 +91,10 @@
 	<script src="/node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
 	<script src="/node_modules/tabbedcontent/dist/tabbedcontent.min.js"></script>
 
+	<script src="/templates/admin/js/cropper/scripts/jquery.Jcrop.min.js"></script>
+	<script src="/templates/admin/js/cropper/scripts/jquery.SimpleCropper.js"></script>
 
 	<script src="/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
-	<!--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8"></script>-->
 	<script src="/node_modules/nestable2/dist/jquery.nestable.min.js"></script>
 	<script src="/node_modules/jquery-modal/jquery.modal.min.js"></script>
 	<script src="/templates/admin/js/main.js"></script>

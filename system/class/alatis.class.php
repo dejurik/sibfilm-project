@@ -20,6 +20,7 @@ class Alatis {
 		'pages'			=> 'pages',
 		'feedback'		=> 'feedback',
 		'notify'		=> 'notify',
+		'projects'		=> 'projects',
 		/*
 		'images'		=> 'images',
 

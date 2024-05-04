@@ -8,6 +8,7 @@
 ============================================*/
 
 switch($act) {
+
     case "create_ticket":
 
         if($index->validate->method('post')) {
@@ -24,6 +25,11 @@ switch($act) {
             $mail['message'] = $index->validate->Post('message');
             $aladesign->assign("message", $mail['message']);
 
+            $captcha = $index->validate->Post('captcha');
+
+            $mail['module'] = $index->validate->Post('module') ? $index->validate->Post('module') : null;
+            $mail['page_id'] = $index->validate->Post('page_id') ? $index->validate->Post('page_id') : null;
+
             $error = '';
             if (empty($mail['name']))
                 $error .= 'Введите имя';
@@ -36,6 +42,10 @@ switch($act) {
 
             if (empty($mail['message']))
                 $error .= 'Введите текст сообщения';
+
+            if (empty($_SESSION['CAPTCHA_CODE']) || $_SESSION['CAPTCHA_CODE'] != $captcha || empty($captcha)) {
+                $error .= 'Неверный защитный код';
+            }
 
             if (!empty($error)) {
                 echo json_encode(array('success'=>false, 'message'=>$error));
@@ -57,13 +67,11 @@ switch($act) {
             }
 
         }
+    break;
 
-
-
-
-
-
-        break;
 }
+
+
+
 
 ?>
