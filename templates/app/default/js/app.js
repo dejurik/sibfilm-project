@@ -9,6 +9,13 @@ $( document ).ready(function () {
         },
     });
 
+    $('#edit_profile input[type=file]').on('change', function(){
+        $('#avatar_file_name').html($(this)[0].files[0].name);
+        var info = $(this).parent().parent();
+        info.removeClass("opacity-0 h-0");
+        info.addClass("h-full opacity-100");
+    });
+
 
 });
 
@@ -16,6 +23,79 @@ var menu = document.getElementById('menu');
 function toggleMenu() {
     menu.classList.toggle('hidden');
 }
+
+$('#form_login').on('submit',function (event) {
+    event.preventDefault();
+    $('#login_result').removeClass("text-green-700 bg-green-100 text-red-700 bg-red-100");
+    var form = document.getElementById('form_login');
+    var formData = new FormData(form);
+
+    $.ajax({
+        url: '/users/login/',
+        type: 'POST',
+        data: formData,
+        dataType: 'json',
+        encode: true,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            if(response.success) {
+                $('#login_result').addClass("text-green-700 bg-green-100");
+                $('#login_result').removeClass("hidden");
+                $('#login_result').html(response.message);
+                window.location.href = '/users/';
+            } else {
+                $('#login_result').addClass("text-red-700 bg-red-100");
+                $('#login_result').removeClass("hidden");
+                $('#login_result').html(response.message);
+            }
+        },
+        error: function (xhr, status, error) {
+            $('#login_result').addClass("text-red-700 bg-red-100");
+            $('#login_result').removeClass("hidden");
+            $('#login_result').html(error);
+        }
+    });
+
+
+});
+
+
+$('#form_register').on('submit',function (event) {
+    event.preventDefault();
+    $('#register_result').removeClass("text-green-700 bg-green-100 text-red-700 bg-red-100");
+    var form = document.getElementById('form_register');
+    var formData = new FormData(form);
+
+    $.ajax({
+        url: '/users/register/',
+        type: 'POST',
+        data: formData,
+        dataType: 'json',
+        encode: true,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            if(response.success) {
+                $('#register_result').addClass("text-green-700 bg-green-100");
+                $('#register_result').removeClass("hidden");
+                $('#register_result').html(response.message);
+                window.location.href = '/users/';
+            } else {
+                $('#register_result').addClass("text-red-700 bg-red-100");
+                $('#register_result').removeClass("hidden");
+                $('#register_result').html(response.message);
+            }
+        },
+        error: function (xhr, status, error) {
+            $('#register_result').addClass("text-red-700 bg-red-100");
+            $('#register_result').removeClass("hidden");
+            $('#register_result').html(error);
+        }
+    });
+
+
+});
 
 $("#form_feedback").validate({
     // Specify validation rules

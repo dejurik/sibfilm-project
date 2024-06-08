@@ -94,7 +94,7 @@
 
 		<div class="w-3/4 bg-white shadow rounded p-4 overflow-hidden ml-2">
 			<div class="w-12/12">
-				<textarea name="text" id="edit">{if isset($view.text)}{$view.text}{/if}</textarea>
+				<textarea name="text" id="edit" class="editor">{if isset($view.text)}{$view.text}{/if}</textarea>
 			</div>
 		</div>
 	</div>

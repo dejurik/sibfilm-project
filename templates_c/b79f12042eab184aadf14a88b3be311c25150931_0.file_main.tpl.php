@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.0.2, created on 2024-05-02 15:19:16
+/* Smarty version 5.0.2, created on 2024-05-18 16:59:22
   from 'file:templates/admin/main.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.2',
-  'unifunc' => 'content_663384c4477ee3_89930162',
+  'unifunc' => 'content_6648b43aaa7754_36950754',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b79f12042eab184aadf14a88b3be311c25150931' => 
     array (
       0 => 'templates/admin/main.tpl',
-      1 => 1714652207,
+      1 => 1716040757,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_663384c4477ee3_89930162 (\Smarty\Template $_smarty_tpl) {
+function content_6648b43aaa7754_36950754 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\admin';
 ?><!DOCTYPE HTML PUBLIC '-//W3С//DTD HTML 4.01 Transitional//EN' 'http://www.w3.org/TR/html4/loose.dtd'>
 <html>
@@ -72,6 +72,9 @@ $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\admin
 					</li>
 					<li>
 						<a href="/admin/?mod=sliders&act=view_all" class="<?php if ($_smarty_tpl->getValue('mod') && $_smarty_tpl->getValue('mod') == 'sliders') {?>text-white<?php }?>">Слайдер</a>
+					</li>
+					<li>
+						<a href="/admin/?mod=config&act=view_all" class="<?php if ($_smarty_tpl->getValue('mod') && $_smarty_tpl->getValue('mod') == 'config') {?>text-white<?php }?>">Настройки</a>
 					</li>
 				</ul>
 			</div>

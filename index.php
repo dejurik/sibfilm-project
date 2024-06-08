@@ -40,9 +40,9 @@ class Index extends Alatis
 				// Если инстанс класса уже существует - просто используем уже существующие переменные
 				if(self::$view_instance)
 				{
-					$this->template     	= &self::$view_instance->template;
+					$this->template     = &self::$view_instance->template;
 					$this->main_menu   	= &self::$view_instance->main_menu;
-					$this->footer_menu   = &self::$view_instance->footer_menu;
+					$this->footer_menu  = &self::$view_instance->footer_menu;
 					//$this->group       		= &self::$view_instance->group;
 
 				} else {
@@ -50,13 +50,13 @@ class Index extends Alatis
 					self::$view_instance = $this;
 					$this->main_menu = $this->menu->ViewGroup(1);
 					$this->footer_menu = $this->menu->ViewGroup(2);
-					$this->template = $this->config['templates'];
+					$this->template = $this->config['template'];
 					$this->aladesign->assign("main_menu", $this->main_menu);
 					$this->aladesign->assign("footer_menu", $this->footer_menu);
 					$this->aladesign->assign("template", $this->template);
 
 					// Настраиваем плагины для смарти
-					$this->aladesign->registerPlugin('function', 'api',		array($this, 'api_plugin'));
+					$this->aladesign->registerPlugin('function', 'api', array($this, 'api_plugin'));
 
 			}
 		}
@@ -83,7 +83,6 @@ class Index extends Alatis
 }
 
 $index = new Index($db);
-
 if(($mod = $index->validate->Get('mod', 'string'))) {
 	switch($mod) {
 		case $mod: include 'modules/'.$mod.'/view.php';

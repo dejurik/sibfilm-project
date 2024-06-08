@@ -11,10 +11,22 @@ ErrorDocument 404 /?mod=pages&act=404
 
 # каптча
 RewriteRule ^image.php$ /system/class/captcha.php [L]
-
 # страницы
 RewriteRule ^pages/([^/]*)$ /?mod=pages&act=view&url=$1 [L]
 
+# пользователи
+RewriteRule ^users/$ /?mod=users&act=view [L]
+RewriteRule ^users/login/$ /?mod=users&act=login [L]
+RewriteRule ^users/logout/$	/?mod=users&act=logout [L]
+RewriteRule ^users/forgot/$ /?mod=users&act=forgot [L]
+RewriteRule ^users/forgot/([^/]*)$ /?mod=users&act=forgot&code=$1 [L]
+RewriteRule ^users/profile/$ /?mod=users&act=profile [L]
+RewriteRule ^users/register/$ /?mod=users&act=register [L]
+
 # проекты
+RewriteRule ^projects?$ /?mod=projects&act=view_all [L,QSA]
+RewriteRule ^projects/([^/]*)$ /?mod=projects&act=view&url=$1 [L]
+
+# Каталог
 RewriteRule ^projects?$ /?mod=projects&act=view_all [L,QSA]
 RewriteRule ^projects/([^/]*)$ /?mod=projects&act=view&url=$1 [L]

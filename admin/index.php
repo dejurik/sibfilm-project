@@ -62,7 +62,7 @@ class AdminIndex extends Alatis {
 	$aladesign->assign("access", $access);
 
 	if(!isset($access['VIEW_ADMIN'])) {
-		die();
+		die('не админ');
 	}
 
 	$aladesign->assign("user_id", $user_id->fields);
@@ -75,7 +75,6 @@ class AdminIndex extends Alatis {
         	break;
 		}
 	} else {
-
 		function formatDataSize ( $bytes ) {
 			$units = array ( 'bytes' , 'KB' , 'MB' , 'GB' , 'TB' );
 			foreach ( $units as $unit ) {

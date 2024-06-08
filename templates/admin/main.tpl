@@ -49,6 +49,9 @@
 					<li>
 						<a href="/admin/?mod=sliders&act=view_all" class="{if $mod && $mod eq 'sliders'}text-white{/if}">Слайдер</a>
 					</li>
+					<li>
+						<a href="/admin/?mod=config&act=view_all" class="{if $mod && $mod eq 'config'}text-white{/if}">Настройки</a>
+					</li>
 				</ul>
 			</div>
 

@@ -13,7 +13,7 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="/templates/app/{$template}/images/icons/favicon-16x16.png">
 		<link rel="manifest" href="/templates/app/{$template}/images/icons/site.webmanifest">
 
-		<link href="/templates/css/output.css" rel="stylesheet" />
+		<link href="/templates/css/output.css?v={$smarty.now}" rel="stylesheet" />
 	</head>
 
 <body>

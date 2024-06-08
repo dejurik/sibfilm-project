@@ -17,7 +17,6 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
 		{ name: 'colors', items: [ 'TextColor', 'BGColor' ] }
 	];
-
 	config.allowedContent = true;
 	config.removeButtons = 'Subscript,Superscript';
 	config.removeDialogTabs = 'image:advanced;link:advanced';

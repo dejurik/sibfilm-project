@@ -12,12 +12,14 @@ class Users extends Alatis {
 	public $sid;				// идентификатор текущей сессии
 	public $uid;				// идентификатор текущего пользователя
 	public $onlineMap;			// карта пользователей online
+	public $role_id;			// ИД роли
 
 	public function __construct($db) {
 		parent::__construct($db);
 		$this->sid = null;
 		$this->uid = null;
 		$this->onlineMap = null;
+		$this->role_id = null;
 	}
 
 	public function ClearSessions() {
@@ -39,6 +41,7 @@ class Users extends Alatis {
 		$SQL = "SELECT u.*, r.name as role_name, r.description FROM ".PREF."users u LEFT JOIN ".PREF."roles r ON u.role_id = r.id_item WHERE u.id_item = ".$user_id;
 		$rs = $this->db->Execute($SQL);
 		if (empty($_SESSION['user_id'])) {$_SESSION['user_id'] = $user_id;}
+		if (empty($_SESSION['role_id'])) {$_SESSION['role_id'] = $rs->fields["role_id"];}
 		return $rs;
 	}
 
@@ -105,7 +108,7 @@ class Users extends Alatis {
 		if ($sid == null && isset($_COOKIE['email'])) {
 			$user = $this->GetByLogin($_COOKIE['email']);
 			if ($user->fields['id_item'] != null && $user->fields['password'] == $_COOKIE['password']) {
-				$sid = $this->OpenSession($user->fields['id_item']);
+				$sid = $this->OpenSession($user->fields['id_item'], $user->fields['role_id']);
 			}
 		}
 		// Запоминаем в кеш.
@@ -122,7 +125,7 @@ class Users extends Alatis {
 		return $this->db->Execute($SQL);
 	}
 
-	public function OpenSession($user_id)	{
+	public function OpenSession($user_id, $role_id)	{
 
 		function GenerateStr($length = 10) {
 			$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789";
@@ -145,6 +148,7 @@ class Users extends Alatis {
 		$rs = $this->db->Execute($SQL);
 		// регистрируем сессию в PHP сессии
 		$_SESSION['sid'] = $sid;
+		$_SESSION['role_id'] = $role_id;
 		return $sid;
 	}
 
@@ -174,6 +178,8 @@ class Users extends Alatis {
 				WHERE u.id_item = ".$user_id;
 
 		$rs = $this->db->Execute($SQL);
+
+		$access = array();
 		while(!$rs->EOF) {
 			$access[$rs->fields["name"]] = $rs->fields["name"];
 			$rs->MoveNext();
@@ -186,15 +192,88 @@ class Users extends Alatis {
 		$this->uid = null;
 	}
 
+	public function ViewAllRoles() {
+		$SQL = "SELECT * FROM ".PREF."roles ORDER BY id_item DESC";
+		return $this->db->getAll($SQL);
+	}
 
+	public function CountAllUsers($filter = array()) {
 
+		$role_id_filter = '';
 
+		if (!empty($filter['role_id'])) {
+			$role_id_filter = "AND role_id in ('".$filter['role_id']."')";
+		}
 
+		$SQL = "SELECT count(*) as count FROM ".PREF."users WHERE 1 $role_id_filter";
+		return $this->db->getRow($SQL);
+	}
 
+	public function ViewAll($filter = array()) {
 
+		$page = 1;
+		$limit = 1000;
+		$role_id_filter = '';
+		$keyword_filter = '';
 
+		if(isset($filter['page'])) {
+			$page = max(1, intval($filter['page']));
+		}
+		if(isset($filter['limit'])) {
+			$limit = max(1, intval($filter['limit']));
+		}
+		if (!empty($filter['role_id'])) {
+			$role_id_filter = "AND u.role_id in ('".$filter['role_id']."')";
+		}
 
+		if(isset($filter['keyword'])) {
+			$keywords = explode(' ', $filter['keyword']);
+			foreach($keywords as $keyword) {
+				$keyword_filter .= "AND u.name LIKE ".$this->db->qStr(trim("%".$keyword."%"))." OR u.email LIKE ".$this->db->qStr(trim("%".$keyword."%"));
+			}
+		}
 
+		$sql_limit = " LIMIT ".($page-1)*$limit.", ".$limit;
+
+		$SQL = "SELECT u.id_item,u.email,u.name,u.role_id,u.enabled,u.created, r.name as role_name FROM ".PREF."users as u
+			left join ".PREF."roles as r on u.role_id = r.id_item
+			WHERE 1 $role_id_filter $keyword_filter ORDER BY created DESC $sql_limit";
+		return $this->db->getAll($SQL);
+	}
+
+	public function View($filter = array()) {
+		if (isset($filter['id_item'])) {
+			$item = "AND p.id_item=".$filter['id_item'];
+		} else if (isset($filter['email'])) {
+			$item = "AND p.email='".$filter['email']."'";
+		}
+		$enabled_filter = '';
+		if(!empty($filter['enabled'])){
+			$enabled_filter = "AND p.enabled=".$filter['enabled'];
+		}
+
+		$SQL = "SELECT p.* FROM ".PREF."users p WHERE 1 $enabled_filter $item";
+		return $this->db->getRow($SQL);
+	}
+
+	public function CheckUser($email) {
+		$SQL = "SELECT count(*) as count FROM ".PREF."users WHERE email=".$this->db->qStr($email);
+		return $this->db->getRow($SQL);
+	}
+
+	public function UpdateUser($id, $data) {
+		$this->db->AutoExecute(PREF."users", $data, 'UPDATE', 'id_item in ('.$id.')');
+	}
+
+	public function AddUser($data) {
+		$this->db->AutoExecute(PREF."users", $data, 'INSERT');
+		return $this->db->insert_Id();
+	}
+
+	public function CheckPassword($data) {
+		$SQL = "SELECT u.* FROM ".PREF."users u WHERE email=".$this->db->qStr($data['email'])." AND password=".$this->db->qStr(md5($data['password']))." LIMIT 1";
+		return $this->db->getRow($SQL);
+	}
 
 
 

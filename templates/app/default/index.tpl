@@ -9,7 +9,6 @@
         <div class="flex flex-row w-full block w-auto bg-[#F3F3F3]/20 mb-8">
 
             <div class="basis-2/3 mr-4">
-
                 <a href="./projects.html" class="">
                     <div class="bg-[#34445d] h-80 rounded-lg mb-4 relative block bg-[url('/templates/app/default/images/projects.jpg')] bg-right bg-no-repeat max-md:bg-none">
                         <div class="absolute bottom-7 left-7 *:text-white">
@@ -30,7 +29,6 @@
             </div>
 
             <div class="basis-1/3">
-
                 <a href="./services.html" class="">
                     <div class="bg-[#f3f3f1] h-56 rounded-lg mb-4 relative block bg-[url('/templates/app/default/images/services.jpg')] bg-right bg-no-repeat max-md:bg-none ">
                         <div class="absolute bottom-7 left-7 *:text-[#7B8384]">
@@ -48,7 +46,6 @@
                         </div>
                     </div>
                 </a>
-
             </div>
 
         </div>

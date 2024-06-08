@@ -19,9 +19,33 @@ class Config extends Alatis {
         return $rs->fields;
    	}
 
+    public function Update($id, $data) {
+        $this->db->AutoExecute(PREF."config", $data, 'UPDATE', 'id='.$id);
+    }
 
+    public function viewDir($dir) {
+        if($handle = opendir(A_PATH.$dir)) {
+            while(false !== ($file = readdir($handle))) {
+                if ($file != "." && $file != "..") {
+                    $arr[] = array(
+                        "file" => $file
+                    );
+                }
+            }
+            closedir($handle);
+            return $arr;
+        }
+    }
 
-
+    public function saveBase64ToImage($base64DataString, $path) {
+        list($dataType, $imageData) = explode(';', $base64DataString);
+        $imageExtension = explode('/', $dataType)[1];
+        list(, $encodedImageData) = explode(',', $imageData);
+        $decodedImageData = base64_decode($encodedImageData);
+        $filename = uniqid();
+        file_put_contents(A_PATH.$path.$filename.".{$imageExtension}", $decodedImageData);
+        return $path.$filename.".{$imageExtension}";
+    }
 	
 
 

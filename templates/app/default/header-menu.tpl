@@ -41,7 +41,7 @@
 					{/foreach}
 
 					<li>
-						<a href="#" class="block text-lg px-4 py-2 border rounded-full text-white border-white hover:border-transparent hover:text-[#34445C] hover:bg-white lg:mt-0 mr-5">Личный кабинет</a>
+						<a href="/users/" class="block text-lg px-4 py-2 border rounded-full text-white border-white hover:border-transparent hover:text-[#34445C] hover:bg-white lg:mt-0 mr-5">Личный кабинет</a>
 					</li>
 
 				</ul>
@@ -57,7 +57,7 @@
 						{/if}
 					{/foreach}
 
-					<a href="#" class="max-sm:hidden block text-sm px-4 py-2 leading-none border rounded-full text-[#34445C] border-[#34445C] hover:border-transparent hover:text-white hover:bg-[#34445C] lg:mt-0">Личный кабинет</a>
+					<a href="/users/" class="max-sm:hidden block text-sm px-4 py-2 leading-none border rounded-full text-[#34445C] border-[#34445C] hover:border-transparent hover:text-white hover:bg-[#34445C] lg:mt-0">Личный кабинет</a>
 
 					<button class="sm:hidden px-3 py-2 border rounded text-[#34445C] border-[#34445C] hover:text-white hover:bg-[#34445C]" onclick="toggleMenu()">
 						<svg class="h-3 w-3 bg-white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>

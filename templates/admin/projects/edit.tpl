@@ -196,7 +196,6 @@
 
 </form>
 
-{*{include file="templates/admin/floara/floara.tpl"}*}
 
 
 

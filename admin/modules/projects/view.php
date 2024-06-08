@@ -32,12 +32,12 @@ switch($act) {
             $old_picture = $adminview->validate->Post('old_picture');
 
             if (!empty($avatar)) {
-                $data['avatar'] = $adminview->projects->saveBase64ToImage($avatar, '/uploads/staffs/');
+                $data['avatar'] = $adminview->config->saveBase64ToImage($avatar, '/uploads/staffs/');
             }
 
             if(!empty($id)) {
                 if ($action == 'edit_staff') {
-                    if (!empty($new_picture)) {
+                    if (!empty($avatar)) {
                         /*if(copy(A_PATH.'/uploads/staffs/t/'.$new_picture, A_PATH.'/uploads/staffs/'.$new_picture)){
                             $data['avatar'] = '/uploads/staffs/'.$new_picture;
                             unlink(A_PATH.'/uploads/staffs/t/'.$new_picture);

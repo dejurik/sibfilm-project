@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.0.2, created on 2024-05-02 16:43:19
+/* Smarty version 5.0.2, created on 2024-06-03 21:20:05
   from 'file:default/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.2',
-  'unifunc' => 'content_6633987795b024_73595496',
+  'unifunc' => 'content_665e0955548880_80151139',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a1e468dd4332a435225844ff92608196361446ef' => 
     array (
       0 => 'default/index.tpl',
-      1 => 1712480916,
+      1 => 1717334427,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:default/sliders/index_sliders.tpl' => 1,
   ),
 ))) {
-function content_6633987795b024_73595496 (\Smarty\Template $_smarty_tpl) {
+function content_665e0955548880_80151139 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\app\\default';
 $_smarty_tpl->renderSubTemplate("file:default/sliders/index_sliders.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('sliders'=>$_smarty_tpl->getValue('sliders')), (int) 0, $_smarty_current_dir);
 ?>
@@ -35,7 +35,6 @@ $_smarty_tpl->renderSubTemplate("file:default/sliders/index_sliders.tpl", $_smar
         <div class="flex flex-row w-full block w-auto bg-[#F3F3F3]/20 mb-8">
 
             <div class="basis-2/3 mr-4">
-
                 <a href="./projects.html" class="">
                     <div class="bg-[#34445d] h-80 rounded-lg mb-4 relative block bg-[url('/templates/app/default/images/projects.jpg')] bg-right bg-no-repeat max-md:bg-none">
                         <div class="absolute bottom-7 left-7 *:text-white">
@@ -56,7 +55,6 @@ $_smarty_tpl->renderSubTemplate("file:default/sliders/index_sliders.tpl", $_smar
             </div>
 
             <div class="basis-1/3">
-
                 <a href="./services.html" class="">
                     <div class="bg-[#f3f3f1] h-56 rounded-lg mb-4 relative block bg-[url('/templates/app/default/images/services.jpg')] bg-right bg-no-repeat max-md:bg-none ">
                         <div class="absolute bottom-7 left-7 *:text-[#7B8384]">
@@ -74,7 +72,6 @@ $_smarty_tpl->renderSubTemplate("file:default/sliders/index_sliders.tpl", $_smar
                         </div>
                     </div>
                 </a>
-
             </div>
 
         </div>

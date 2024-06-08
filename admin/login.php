@@ -30,11 +30,11 @@ if(isset($rs['user_id'])) {
 		@ini_set('session.gc_maxlifetime', 86400); // 86400 = 24 часа
 		@ini_set('session.cookie_lifetime', 0); // 0 - пока браузер не закрыт
 		$expire = time() + 3600 * 24 * 100;
-		setcookie('email', $email, $expire, "/admin/");
-		setcookie('password', md5($password), $expire, "/admin/");
+		setcookie('email', $email, $expire, "/");
+		setcookie('password', md5($password), $expire, "/");
 	}
 	$alatis->users->LogDate($_SESSION['user_id']);
-	$alatis->users->OpenSession($_SESSION['user_id']);
+	$alatis->users->OpenSession($_SESSION['user_id'],$_SESSION['role_id']);
 	echo json_encode(array('success'=>true, 'message'=>'Перенаправляем...'));
 	exit();
 	//$alatis->validate->Locate("/admin/", 0, 0);

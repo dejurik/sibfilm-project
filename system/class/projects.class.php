@@ -214,18 +214,6 @@ class Projects extends Alatis {
         $this->db->execute($SQL);
     }
 
-    public function saveBase64ToImage($base64DataString, $path) {
-        list($dataType, $imageData) = explode(';', $base64DataString);
-        $imageExtension = explode('/', $dataType)[1];
-        list(, $encodedImageData) = explode(',', $imageData);
-        $decodedImageData = base64_decode($encodedImageData);
-        $filename = uniqid();
-        file_put_contents(A_PATH.$path.$filename.".{$imageExtension}", $decodedImageData);
-        return $path.$filename.".{$imageExtension}";
-    }
-
-
-
 }
 
 ?>

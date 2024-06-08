@@ -75,6 +75,13 @@
     background-image: url('/templates/admin/js/cropper/images/CancelRed.png');
 }
 
+#fileInput{
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    display: none !important;
+}
+
 .jcrop-holder {
     direction: ltr;
     text-align: left;

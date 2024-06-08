@@ -77,6 +77,27 @@ $(document).ready(function() {
         return false;
     });
 
+    $("#gen_password").on('click',function() {
+        var length = 10,
+            charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~!@-#$",
+            result = '',
+            input = $('#password');
+            input.val('');
+
+        if(window.crypto && window.crypto.getRandomValues) {
+            result = Array(length)
+                .fill(charset)
+                .map(x => x[Math.floor(crypto.getRandomValues(new Uint32Array(1))[0] / (0xffffffff + 1) * (x.length + 1))])
+                .join('');
+        } else {
+            for (var i = 0, n = charset.length; i < length; ++i) {
+                result += charset.charAt(Math.floor(Math.random() * n));
+            }
+        }
+        input.val(result);
+        return false
+    });
+
     // Удалить заказ
     $("a.delete").on('click',function() {
         const id_item = $(this).attr("data-id");

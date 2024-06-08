@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.0.2, created on 2024-04-22 15:20:02
+/* Smarty version 5.0.2, created on 2024-06-02 12:50:19
   from 'file:default/header.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.2',
-  'unifunc' => 'content_662655f2becff3_92489783',
+  'unifunc' => 'content_665c405bdf0db7_04192082',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd3d4513c63e0ca112a90aafbe23e330203e6a52c' => 
     array (
       0 => 'default/header.tpl',
-      1 => 1712673640,
+      1 => 1717321813,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:default/header-menu.tpl' => 1,
   ),
 ))) {
-function content_662655f2becff3_92489783 (\Smarty\Template $_smarty_tpl) {
+function content_665c405bdf0db7_04192082 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\app\\default';
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -54,7 +54,8 @@ echo $_smarty_tpl->getValue('config')['meta_description'];
 		<link rel="manifest" href="/templates/app/<?php echo $_smarty_tpl->getValue('template');?>
 /images/icons/site.webmanifest">
 
-		<link href="/templates/css/output.css" rel="stylesheet" />
+		<link href="/templates/css/output.css?v=<?php echo time();?>
+" rel="stylesheet" />
 	</head>
 
 <body>
