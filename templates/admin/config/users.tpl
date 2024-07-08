@@ -1,5 +1,3 @@
-{include file="templates/admin/ckeditor.tpl"}
-
 <div class="flex flex-wrap">
     <div class="flex items-center py-4 w-full">
         <div class="w-full">
@@ -23,7 +21,28 @@
 <div class="flex flex-wrap">
     <div class="flex py-4 w-full items-start">
 
-        <div class="bg-white shadow rounded-md h-full w-3/4 p-4 relative overflow-hidden">
+        <div class="bg-white shadow rounded-md w-1/4 relative overflow-hidden ">
+            <div class="border-b border-gray-300 border-dashed p-4">
+                <h4 class="">Другие разделы</h4>
+            </div>
+
+            <div class="p-4">
+                <a href="/admin/?mod=config&act=view_all" class="block mb-4 font-medium text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded text-sm px-3 py-3 mr-2 w-full">
+                    Общие настройки
+                </a>
+                <a href="#" class="mb-4 font-medium text-black bg-gray-100 rounded text-sm px-3 py-3 mr-2 w-full block cursor-default" disabled>
+                    Пользователи
+                </a>
+                <a href="#" class="block mb-4 font-medium text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded text-sm px-3 py-3 mr-2 w-full">
+                    Пользователи
+                </a>
+                <a href="#" class="block mb-4 font-medium text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded text-sm px-3 py-3 mr-2 w-full">
+                    Пользователи
+                </a>
+            </div>
+        </div>
+
+        <div class="ml-4 bg-white shadow rounded-md h-full w-3/4 p-4 relative overflow-hidden">
 
 
             <form method="GET" action="">
@@ -128,33 +147,7 @@
 
 
         </div>
-        <div class="ml-4 bg-white shadow rounded-md w-1/4 relative overflow-hidden ">
 
-            <div class="border-b border-gray-300 border-dashed p-4">
-                <h4 class="">Другие разделы</h4>
-            </div>
-
-            <div class="p-4">
-                <a href="/admin/?mod=config&act=view_all" class="block mb-4 font-medium text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded text-sm px-3 py-3 mr-2 w-full">
-                    Общие настройки
-                </a>
-                <a href="#" class="mb-4 font-medium text-black bg-gray-100 rounded text-sm px-3 py-3 mr-2 w-full block cursor-default" disabled>
-                    Пользователи
-                </a>
-                <a href="#" class="block mb-4 font-medium text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded text-sm px-3 py-3 mr-2 w-full">
-                    Пользователи
-                </a>
-                <a href="#" class="block mb-4 font-medium text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded text-sm px-3 py-3 mr-2 w-full">
-                    Пользователи
-                </a>
-
-
-            </div>
-
-
-
-
-        </div>
 
 
     </div>

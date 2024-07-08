@@ -116,7 +116,8 @@
 				<textarea name="text" id="edit2" class="editor">{if isset($view.text)}{$view.text}{/if}</textarea>
 			</div>
 		</div>
-		<div class="w-3/12 bg-white shadow rounded p-4 mr-2">
+
+		<div class="w-3/12 bg-white shadow rounded p-4">
 
 			<div class="w-full">
 				<label class="block text-sm text-gray-900">Картинка</label>

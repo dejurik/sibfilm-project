@@ -24,50 +24,16 @@ switch($act) {
             $id = $adminview->validate->Post('id');
             $action = $adminview->validate->Post('action', 'string');
 
-            $data['title'] = $adminview->validate->Post('title', 'string');
-            $data['post'] = $adminview->validate->Post('post', 'string');
-
-            $avatar = $adminview->validate->Post('avatar');
-
-            $old_picture = $adminview->validate->Post('old_picture');
-
-            if (!empty($avatar)) {
-                $data['avatar'] = $adminview->config->saveBase64ToImage($avatar, '/uploads/staffs/');
-            }
-
             if(!empty($id)) {
-                if ($action == 'edit_staff') {
-                    if (!empty($avatar)) {
-                        /*if(copy(A_PATH.'/uploads/staffs/t/'.$new_picture, A_PATH.'/uploads/staffs/'.$new_picture)){
-                            $data['avatar'] = '/uploads/staffs/'.$new_picture;
-                            unlink(A_PATH.'/uploads/staffs/t/'.$new_picture);
-                        }*/
-                        if (!empty($old_picture)) {
-                            unlink(A_PATH.$old_picture);
-                        }
-                    }
-                    $adminview->projects->UpdateStaffId($id, $data);
-                    $adminview->validate->Locate("/admin/?mod=projects&act=view_all");
-                }
                 if ($action == 'delete') {
                     $content = $adminview->projects->View(array('id_item'=>$id));
                     $adminview->projects->DeleteProjectId($id);
-                    $adminview->projects->DeleteOption(array('project_id'=>$id));
-                    $adminview->projects->DeleteStaffs(array('project_id'=>$id));
+                    $adminview->features->DeleteOption(array('project_id'=>$id,'module_id'=>'projects'));
+                    $adminview->staffs->DeleteStaffs(array('page_id'=>$id, 'module_id'=>'projects'));
                     if (!empty($content['picture'])) {
                         unlink(A_PATH.$content['picture']);
                     }
                     echo json_encode(array('success'=>true, 'message'=>'Проект удален!'));
-                    exit();
-                }
-                if ($action == 'delete_staff') {
-                    $content = $adminview->projects->GetStaffId($id);
-                    $adminview->projects->DeleteStaffId($id);
-                    $adminview->projects->DeleteStaffs(array('staff_id'=>$id));
-                    if (!empty($content['avatar'])) {
-                        unlink(A_PATH.$content['avatar']);
-                    }
-                    echo json_encode(array('success'=>true, 'message'=>$content['title'].' удален!'));
                     exit();
                 }
 
@@ -75,13 +41,9 @@ switch($act) {
                 exit();
             }
 
-            if ($action == 'add_staff') {
-                $adminview->projects->InsertStaff($data);
-            }
-
         }
 
-        $aladesign->assign("staff_all", $adminview->projects->GetStaffs());
+        $aladesign->assign("staff_all", $adminview->staffs->GetStaffs());
         $aladesign->assign("view_all", $adminview->projects->ViewAll());
         $aladesign->assign("page", "templates/admin/projects/view_all.tpl");
         $aladesign->display("templates/admin/main.tpl");
@@ -134,21 +96,21 @@ switch($act) {
             }
 
             if(is_array($data_project_staffs)) {
-                $adminview->projects->DeleteStaffs(array('project_id'=>$data_id));
+                $adminview->staffs->DeleteStaffs(array('page_id'=>$data_id, 'module_id'=>'projects'));
                 foreach($data_project_staffs as $staff_id) {
                     if ($staff_id == 0)
                         continue;
                     $pos = 1;
-                    $adminview->projects->UpdateStaffs($data_id, $staff_id, $pos);
+                    $adminview->staffs->UpdateStaffs($data_id, $staff_id, 'projects');
                     $pos++;
                 }
             }
 
             if(is_array($data_project_options)) {
-                $adminview->projects->DeleteOption(array('project_id'=>$data_id));
+                $adminview->features->DeleteOption(array('page_id'=>$data_id, 'module_id'=>'projects'));
                 foreach($data_project_options as $feature_id=>$value) {
                     $pos = 1;
-                    $adminview->projects->UpdateOption($data_id, $feature_id, $value, $pos);
+                    $adminview->features->UpdateOption($data_id, $feature_id, $value, 'projects');
                     $pos++;
                 }
             }
@@ -157,13 +119,13 @@ switch($act) {
                 foreach($data_project_new_options['names'] as $i=>$name) {
                     $value = trim($data_project_new_options['value'][$i]);
                     if(!empty($name) && !empty($value)) {
-                        $feature = $adminview->projects->SelectFeature($name);
+                        $feature = $adminview->features->GetFeature(array('title'=>trim($name), 'module_id'=>'projects'));
                         if(empty($feature["id_item"])){
-                            $feature_id = $adminview->projects->AddFeature(array('title'=>trim($name)));
+                            $feature_id = $adminview->features->AddFeature(array('title'=>trim($name),'module_id'=>'projects'));
                         } else {
                             $feature_id = $feature["id_item"];
                         }
-                        $adminview->projects->UpdateOption($data_id, $feature_id, $value, 1);
+                        $adminview->features->UpdateOption($data_id, $feature_id, $value, 'projects');
                     }
                 }
             }
@@ -174,56 +136,16 @@ switch($act) {
 
         if ($id) {
             $aladesign->assign("view", $adminview->projects->View(array('id_item'=>$id)));
-            $aladesign->assign("options", $adminview->projects->GetOptions(array('project_id'=>$id)));
-            $aladesign->assign("project_staffs", $adminview->projects->GetProjectStaffs(array('project_id'=>$id)));
+            $aladesign->assign("options", $adminview->features->GetOptions(array('page_id'=>$id,'module_id'=>'projects')));
+            $aladesign->assign("project_staffs", $adminview->staffs->GetPageStaffs(array('page_id'=>$id,'module_id'=>'projects')));
         }
 
-        $aladesign->assign("staffs", $adminview->projects->GetStaffs());
-        $aladesign->assign("features", $adminview->projects->GetFeatures());
+        $aladesign->assign("staffs", $adminview->staffs->GetStaffs());
+        $aladesign->assign("features", $adminview->features->GetFeatures(array('module_id'=>'projects')));
         $aladesign->assign("page", "templates/admin/projects/edit.tpl");
         $aladesign->display("templates/admin/main.tpl");
 
     break;
-
-    case "staff":
-        if (isset($id)) {
-            $aladesign->assign("staff", $adminview->projects->GetStaffId($id));
-        }
-        $aladesign->display("templates/admin/projects/edit_staff.tpl");
-    break;
-
-    case "crop":
-        $path = '/uploads/staffs/t/';
-        $file = $_FILES['staff_avatar']['tmp_name'];
-        $new_image_name = date('Ymd').uniqid().'.jpg';
-
-        if(move_uploaded_file($file, A_PATH.$path.$new_image_name)){
-            echo json_encode(['status'=>1, 'msg'=>'success11', 'name'=>$new_image_name]);
-        }else{
-            echo json_encode(['status'=>0, 'msg'=>'failed']);
-        }
-        exit();
-/*
-        if($adminview->validate->files('staff_avatar')['name'] != '') {
-            $uploader = new Uploader\Uploader(A_PATH);
-            $upload = $uploader
-                ->with($adminview->validate->files('staff_avatar'))
-                ->setFilename('UIMG'.date('Ymd').uniqid().'.jpg')
-                ->setOverwrite(true)
-                ->setCreateDir(true)
-                ->setDirectory('/uploads/staffs/t');
-            try {
-                $upload->save();
-                echo json_encode(['status'=>1, 'msg'=>'success', 'name'=>$upload->getDestination()]);
-            } catch (Exception $e) {
-                echo json_encode(['status'=>0, 'msg'=>'failed']);
-            }
-        }
-*/
-
-
-    break;
-
 
 
 }

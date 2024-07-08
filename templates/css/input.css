@@ -2,7 +2,9 @@
 @import "modals.css";
 @import "services.css";
 @import "cropper.css";
+@import "plyr.css";
 @import "../../node_modules/magnific-popup/dist/magnific-popup.css";
+/*@import "../../node_modules/plyr/dist/plyr.css";*/
 
 @tailwind base;
 @tailwind components;

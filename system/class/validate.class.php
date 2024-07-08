@@ -150,7 +150,7 @@ class Validate {
 		return true;
     }
 
-
+/*
 	public function checkout_form($params) {
 		$module_name = preg_replace("/[^A-Za-z0-9]+/", "", $params['module']);
 		$form = '';
@@ -160,7 +160,7 @@ class Validate {
 			$form = $Module->checkout_form($params['order_id'], $params['button_text']);
 		}
 		return $form;
-	}
+	}*/
 
 	public function getUserIp() {
 
@@ -200,7 +200,51 @@ class Validate {
 		return $_SERVER['REMOTE_ADDR'];
 
 	}
-	
+
+	public function multiplyFileUpload($filePath) {
+
+		$chunk = isset($_REQUEST["chunk"]) ? intval($_REQUEST["chunk"]) : 0;
+		$chunks = isset($_REQUEST["chunks"]) ? intval($_REQUEST["chunks"]) : 0;
+		$out = @fopen(A_PATH."{$filePath}.part", $chunk == 0 ? "wb" : "ab");
+
+		if ($out) {
+			$in = @fopen($_FILES["file"]["tmp_name"], "rb");
+			if ($in) {
+				while ($buff = fread($in, 4096)) {
+					fwrite($out, $buff);
+				}
+			} else {
+				$this->jsonResponse(0, "Failed to open input stream");
+			}
+			@fclose($in);
+			@fclose($out);
+			@unlink($_FILES["file"]["tmp_name"]);
+		} else {
+			$this->jsonResponse(0, "Failed to open output stream");
+		}
+
+		if (!$chunks || $chunk == $chunks - 1) {
+			rename(A_PATH."{$filePath}.part", A_PATH.$filePath);
+			return $filePath;
+		}
+		$this->jsonResponse(1, "Upload OK");
+	}
+
+	public function jsonResponse ($ok=1, $info="") {
+		if ($ok==0) {
+			http_response_code(400);
+		}
+		exit(json_encode(["ok"=>$ok, "info"=>$info]));
+	}
+
+	public function DeleteFile($file) {
+		if (!empty($file) && file_exists($file)) {
+			unlink(A_PATH.$file);
+		}
+	}
+
+
+
 }
 
 

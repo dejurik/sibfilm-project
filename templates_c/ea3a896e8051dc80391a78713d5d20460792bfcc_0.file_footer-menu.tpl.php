@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.0.2, created on 2024-04-22 15:20:03
+/* Smarty version 5.0.2, created on 2024-07-03 00:29:01
   from 'file:default/footer-menu.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.2',
-  'unifunc' => 'content_662655f303cfe6_35195234',
+  'unifunc' => 'content_6684711dac4693_89590924',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_662655f303cfe6_35195234 (\Smarty\Template $_smarty_tpl) {
+function content_6684711dac4693_89590924 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\app\\default';
 ?><div class="bg-[#7B8384] sm:px-16 px-6 flex justify-center items-start">
 	<div class="xl:max-w-[1280px] w-full">
@@ -48,9 +48,9 @@ $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\app\\
 						<?php if ($_smarty_tpl->getValue('footer_menu')) {?>
 							<?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('footer_menu'), 'item', false, 'key');
-$foreach2DoElse = true;
+$foreach1DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('key')->value => $_smarty_tpl->getVariable('item')->value) {
-$foreach2DoElse = false;
+$foreach1DoElse = false;
 ?>
 								<div class="space-y-3 max-sm:hidden">
 									<h3 class="uppercase"><?php echo $_smarty_tpl->getValue('item')['title'];?>
@@ -59,9 +59,9 @@ $foreach2DoElse = false;
 										<ul class="space-y-1">
 											<?php
 $_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('item')['children'], 'items', false, 'key');
-$foreach3DoElse = true;
+$foreach2DoElse = true;
 foreach ($_from ?? [] as $_smarty_tpl->getVariable('key')->value => $_smarty_tpl->getVariable('items')->value) {
-$foreach3DoElse = false;
+$foreach2DoElse = false;
 ?>
 												<?php if (!empty($_smarty_tpl->getValue('items')['id_item'])) {?>
 													<li><a href="<?php echo $_smarty_tpl->getValue('items')['url'];?>

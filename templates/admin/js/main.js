@@ -19,25 +19,7 @@ $(document).ready(function() {
 			blockerClass: "jquery-modal",
 		};
 
-		//$('a[data-modal]').on('click',function(event) {
-				//event.preventDefault();
-				/*$(this).modal({
-					escapeClose: false,
-					clickClose: false,
- 					showClose: false,
-					 closeExisting: false
-				});*/
-  			/*this.blur(); // Manually remove focus from clicked link.
-  			$.get(this.href, function(html) {
-						$(html).appendTo('body').modal({
-								escapeClose: false,
-								clickClose: false,
-								showClose: false,
-								closeExisting: false
-							});
-				});*/
 
-	//	});
 
 	// Выполняем транслитерацию
     $("#generation").on('click',function() {
@@ -123,7 +105,7 @@ $(document).ready(function() {
                     success: function (response) {
                         if(response.success) {
                             Swal.fire({
-                                title: "Удалена!",
+                                title: "Запись удалена!",
                                 text: response.message,
                                 icon: "success",
                             }).then((result2) => {
@@ -154,6 +136,12 @@ $(document).ready(function() {
         updateOutput($("#sort_menu").data('output', $('#nestable-output')));
     }
 
+    if (($("#sort_variant").length > 0)){
+        $('#sort_variant').nestable({maxDepth: 1});
+    }
+
+
+
     // Добавление нового свойства товара
     var feature = $('#new_feature').clone(true);
     $('#new_feature').remove().removeAttr('id');
@@ -162,7 +150,266 @@ $(document).ready(function() {
         return false;
     });
 
+    // Добавление нового свойства товара
+    var variant = $('#new_variant').clone(true);
+    $('#new_variant').remove().removeAttr('id');
+
+    $('#addVariant').click(function () {
+        var variant_id = parseInt($(this).attr("data-variants-count")),
+            new_variant = $(variant).clone(true);
+
+        $(new_variant).find('input.name').attr('name','new_variants[name][n'+variant_id+']');
+        $(new_variant).find('input.duration').attr('name','new_variants[duration][n'+variant_id+']');
+        $(new_variant).find('input.author').attr('name','new_variants[author][n'+variant_id+']');
+
+        $(new_variant).appendTo('#variants_list').fadeIn('slow')
+            .find('button.attach_images').attr("data-variant",'n'+variant_id)
+            .next( "button.attach_files" ).attr("data-variant",'n'+variant_id);
+
+        var images_container = $(new_variant).find('[id^="images-container-"]').attr("id","images-container-n"+variant_id),
+            files_container = $(new_variant).find('[id^="files-container-"]').attr("id","files-container-n"+variant_id);
+        $(images_container).find('div').each(function (index) {
+            var new_image_list = $(this).find('input').attr('id');
+            $(this).find('input').attr({ name:'new_variants[images][n'+variant_id+'][]', id:new_image_list+'-n'+variant_id });
+            $(this).find('label').attr('for',new_image_list+'-n'+variant_id);
+        });
+        $(files_container).find('div').each(function (index) {
+            var new_file_list = $(this).find('input').attr('id');
+            $(this).find('input').attr({ name:'new_variants[files][n'+variant_id+'][]', id:new_file_list+'-n'+variant_id });
+            $(this).find('label').attr('for',new_file_list+'-n'+variant_id);
+        });
+
+        $(this).attr("data-variants-count",variant_id+1);
+        return false;
+    });
+
+    // Удаление варианта
+    $(document).on('click', '.delete_variant', function () {
+        if ($("#variants_list li").length > 1) {
+            $(this).closest("li").fadeOut(200, function () { $(this).remove(); })
+        }
+    });
+
+    // Открыть картинки для варинта
+    $(document).on('click', '.attach_images', function () {
+        $('#images-container-'+$(this).attr("data-variant")).toggleClass( "hidden" );
+    });
+
+    // Открыть файлы для варинта
+    $(document).on('click', '.attach_files', function () {
+        $('#files-container-'+$(this).attr("data-variant")).toggleClass( "hidden" );
+    });
+
+    // Выделить картинку для варинта
+    $(document).on('click', '[id^="image-list-"]', function () {
+        $(this).parent().toggleClass( "border-blue-400 bg-blue-100" );
+        $(this).parent().toggleClass( "bg-slate-100" );
+    });
+
+    // Выделить файл для варианта
+    $(document).on('click', '[id^="file-list-"]', function () {
+        $(this).parent().toggleClass( "border-blue-400 bg-blue-100" );
+        $(this).parent().toggleClass( "bg-slate-100" );
+    });
+
+    // Удаление изображений
+    $(document).on('click', '.delete_image_product', function () {
+        $(this).closest('div.li-image').fadeOut(200, function () {
+            $(this).remove();
+        });
+        return false;
+    });
+    // Удаление файлов
+    $(document).on('click', '.delete_file_product', function () {
+        $(this).closest('div.li-file').fadeOut(200, function () {
+            $(this).remove();
+        });
+        return false;
+    });
+
+    // Переименовать файл
+    $(document).on('click', '.rename_file', function () {
+        $(this).closest(".li-file").find(".editSpan").hide();
+        $(this).closest(".li-file").find(".editInput").show();
+        $(this).closest(".li-file").find(".rename_file").hide();
+        $(this).closest(".li-file").find(".delete_file_product").hide();
+        $(this).closest(".li-file").find(".save_name_file").show();
+        $(this).closest(".li-file").find(".cancel").show();
+        return false;
+    });
+
+    // Сохранить имя файла
+    $(document).on('click', '.save_name_file', function () {
+        var divObj = $(this).closest(".li-file");
+        var ID = $(this).attr("data-id-file");
+        var description = $(this).closest(".li-file").find(".editInput").val();
+
+        $.ajax({
+            url: '/admin/?mod=config&act=rename_file',
+            type: 'POST',
+            data: {'id':ID, 'description':description},
+            dataType: 'json',
+            success: function (response) {
+                if(response.success) {
+                    divObj.find(".editSpan").text(response.description).show();
+                    divObj.find(".editInput").hide();
+                    divObj.find(".rename_file").show();
+                    divObj.find(".delete_file_product").show();
+                    divObj.find(".save_name_file").hide();
+                    divObj.find(".cancel").hide();
+                    Swal.fire({
+                        title: "Успешно!",
+                        text: response.message,
+                        icon: "success",
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Упс...",
+                    text: "Что то пошло не так!"
+                });
+            }
+        });
+        return false;
+    });
+
+    // Отмена переименовывать файл
+    $(document).on('click', '.cancel', function () {
+        $(this).closest(".li-file").find(".editSpan").show();
+        $(this).closest(".li-file").find(".editInput").hide();
+        $(this).closest(".li-file").find(".rename_file").show();
+        $(this).closest(".li-file").find(".delete_file_product").show();
+        $(this).closest(".li-file").find(".save_name_file").hide();
+        $(this).closest(".li-file").find(".cancel").hide();
+        return false;
+    });
+
+
+    if (($("#multi-uploads-files").length > 0)){
+
+        var list = $('#list');
+
+        var uploader = new plupload.Uploader({
+            runtimes: "html5",
+            browse_button : 'multi-uploads-files',
+            url : '/admin/?mod=shop&act=uploads_files',
+            chunk_size: "25mb",
+            unique_names: true,
+            multipart_params: {
+                "page_id": list.attr("data-page-id"),
+                "module_id": list.attr("data-module-id")
+            },
+            filters : {
+                max_file_size : '2000mb',
+                mime_types: [
+                    {title : "Image files", extensions : "jpg,gif,png"},
+                    {title : "Video files", extensions : "mov,avi"},
+                    {title : "Audio files", extensions : "mp3"}
+                ]
+            },
+
+            init: {
+                PostInit: () => list.html("<div class='text-slate-500 w-full'>Прикрепленные файлы</div>"),
+                FilesAdded: function(up, files) {
+                    list.removeClass("hidden");
+                    plupload.each(files, function(file) {
+                       $('<div class="text-slate-500 w-full" id="' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <span class="text-gray-400 order-last mb-0 float-right"></span></div>').appendTo('#list').fadeIn('slow');
+                    });
+                     $('#uploadfiles').on("click", function() {
+                         uploader.start();
+                         return false;
+                     });
+                },
+                UploadProgress: (up, file) => {
+                    document.getElementById(file.id).getElementsByTagName('span')[0].innerHTML = file.percent + "%";
+                },
+                UploadComplete: function() {
+                    location.reload();
+                    //$("#product_form").submit();
+                },
+                Error: (up, err) => console.error(err)
+            }
+        });
+        uploader.init();
+    }
+
+    if (($('.cropme').length > 0)){
+        $('.cropme').simpleCropper();
+    }
+
+
+});
 
 
 
+// $('.dropdown').each(function(){
+//     var $this = $(this);
+//    // console.log(dropdown);
+//     $this.children('.dropdown-toggle').each(function() {
+//         $(this).on('click',function() {
+//             console.log($this);
+//             this.addClass("block");
+//             console.log(this);
+//         });
+//
+//     });
+// });
+
+
+//
+// $('.dropdown').each(function (index) {
+//     $(this).find('.dropdown-toggle').each(function(subI,subitem) {
+//         subitem.addEventListener("click", function (event) {
+//             subitem.classList.toggle("block");
+//             if (subitem.classList.contains("block") != true) {
+//                 $(this).find(".dropdown-menu").removeClass("block")
+//                 $(this).find(".dropdown-menu").addClass("hidden")
+//             } else {
+//                 dismissDropdownMenu()
+//                 $(this).find(".dropdown-menu").addClass("block")
+//                 $(this).find(".dropdown-menu").removeClass("hidden")
+//                 if ($(this).find(".dropdown-menu").hasClass("block")) {
+//                     subitem.classList.add("block")
+//                 } else {
+//                     subitem.classList.remove("block")
+//                 }
+//                 event.stopPropagation();
+//             }
+//         });
+//
+//     });
+// });
+
+document.querySelectorAll(".dropdown").forEach(function (item) {
+    item.querySelectorAll(".dropdown-toggle").forEach(function (subitem) {
+        subitem.addEventListener("click", function (event) {
+            subitem.classList.toggle("block");
+            if (subitem.classList.contains("block") != true) {
+                item.querySelector(".dropdown-menu").classList.remove("block")
+                item.querySelector(".dropdown-menu").classList.add("hidden")
+            } else {
+                dismissDropdownMenu()
+                item.querySelector(".dropdown-menu").classList.add("block")
+                item.querySelector(".dropdown-menu").classList.remove("hidden")
+                if (item.querySelector(".dropdown-menu").classList.contains("block")) {
+                    subitem.classList.add("block")
+                } else {
+                    subitem.classList.remove("block")
+                }
+                event.stopPropagation();
+            }
+        });
+    });
+});
+
+function dismissDropdownMenu() {
+    $(".dropdown-menu").removeClass("block");
+    $(".dropdown-menu").addClass("hidden");
+    $(".dropdown-toggle").removeClass("block");
+}
+
+window.addEventListener('click', function (e) {
+    dismissDropdownMenu();
 });

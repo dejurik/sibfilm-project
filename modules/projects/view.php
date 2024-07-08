@@ -17,9 +17,9 @@ switch($act) {
 
         $aladesign->assign("content", $content);
 
-        $aladesign->assign("project_staffs", $index->projects->GetAllStaffInProject(array('project_id'=>$content['id_item'])));
-        $aladesign->assign("project_options", $index->projects->GetAllOptionsInProject(array('project_id'=>$content['id_item'])));
-		$aladesign->assign("page", "file:[main]/".$index->template."/projects/view.tpl");
+        $aladesign->assign("project_staffs", $index->staffs->GetAllStaffsInPage(array('page_id'=>$content['id_item'],'module_id'=>'projects')));
+        $aladesign->assign("project_options", $index->features->GetAllOptionsInPage(array('page_id'=>$content['id_item'],'module_id'=>'projects')));
+		$aladesign->assign("page", "file:[main]/".$index->template."/projects/view_product.tpl");
 		$aladesign->display("file:[main]/".$index->template."/main.tpl");
 	break;
 

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.0.2, created on 2024-04-24 20:30:48
+/* Smarty version 5.0.2, created on 2024-07-03 00:36:50
   from 'file:templates/admin/ckeditor.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.2',
-  'unifunc' => 'content_662941c89c8050_49818173',
+  'unifunc' => 'content_668472f2792745_10041823',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_662941c89c8050_49818173 (\Smarty\Template $_smarty_tpl) {
+function content_668472f2792745_10041823 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\admin';
 echo '<script'; ?>
  src="/templates/admin/ckeditor/ckeditor.js"><?php echo '</script'; ?>

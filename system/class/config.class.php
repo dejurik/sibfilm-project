@@ -46,8 +46,11 @@ class Config extends Alatis {
         file_put_contents(A_PATH.$path.$filename.".{$imageExtension}", $decodedImageData);
         return $path.$filename.".{$imageExtension}";
     }
-	
 
+    public function isFileTypeAllowed($fileType) {
+        $allowedFileTypes = array('jpg', 'jpeg', 'png', 'gif', 'pdf');
+        return in_array($fileType, $allowedFileTypes);
+    }
 
 }
 

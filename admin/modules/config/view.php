@@ -143,4 +143,15 @@ switch($act) {
         $aladesign->display("templates/admin/main.tpl");
 
         break;
+
+    case "rename_file":
+        if($adminview->validate->method('post')) {
+            $id = $adminview->validate->Post('id');
+            $description = $adminview->validate->Post('description', 'string');
+            $adminview->files->UpdateFile($id, array('description'=>$description));
+            echo json_encode(array('success'=>true, 'message'=>'Файл переименован!', 'description'=>$description));
+        } else {
+            echo json_encode(array('success'=>false, 'message'=>'Что то пошло не так...'));
+        }
+        break;
 }

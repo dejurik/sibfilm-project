@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.0.2, created on 2024-06-03 22:21:03
+/* Smarty version 5.0.2, created on 2024-07-03 00:27:13
   from 'file:default/header-menu.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.2',
-  'unifunc' => 'content_665e179f3f2543_64940196',
+  'unifunc' => 'content_668470b1120493_94439394',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_665e179f3f2543_64940196 (\Smarty\Template $_smarty_tpl) {
+function content_668470b1120493_94439394 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\app\\default';
 ?><div class="sm:px-16 px-6 relative flex items-start justify-center overflow-hidden bg-[#cccccc]/5">
 	<div class="xl:max-w-[1280px] w-full z-30">

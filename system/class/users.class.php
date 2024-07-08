@@ -24,7 +24,7 @@ class Users extends Alatis {
 
 	public function ClearSessions() {
 		$min = date('Y-m-d H:i:s', time() - 2880 * 30);
-		$SQL = "DELETE FROM ".PREF." sessions WHERE time_last < '".$min."'";
+		$SQL = "DELETE FROM ".PREF."sessions WHERE time_last < '".$min."'";
 		$this->db->Execute($SQL);
 	}
 

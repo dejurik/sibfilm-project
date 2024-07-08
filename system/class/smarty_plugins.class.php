@@ -160,5 +160,42 @@ if(!function_exists('http_build_query')) {
     };
 }
 
+function smarty_tag_bgcolor($params, \Smarty\Template $template): string {
+
+    $info = getimagesize($params['image']);
+
+    switch ($info[2]) {
+        case 1:
+            $img = imageCreateFromGif($params['image']);
+            break;
+        case 2:
+            $img = imageCreateFromJpeg($params['image']);
+            break;
+        case 3:
+            $img = imageCreateFromPng($params['image']);
+            break;
+        default:
+            $img = imagecreatefromwebp($params['image']);
+            break;
+    }
+
+    $width = ImageSX($img);
+    $height = ImageSY($img);
+
+    $thumb = imagecreatetruecolor(1, 1);
+    imagecopyresampled($thumb, $img, 0, 0, 0, 0, 1, 1, $width, $height);
+    $color = '#' . dechex(imagecolorat($thumb, 0, 0));
+
+    imageDestroy($img);
+    imageDestroy($thumb);
+
+    return $color;
+}
+
+function smarty_modifier_json_decode($string) {
+    //var_dump(json_decode($string));
+    return json_decode($string, true);
+}
+
 
 ?>

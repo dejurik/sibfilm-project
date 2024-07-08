@@ -16,7 +16,6 @@ $( document ).ready(function () {
         info.addClass("h-full opacity-100");
     });
 
-
 });
 
 var menu = document.getElementById('menu');
@@ -156,3 +155,98 @@ $("#form_feedback").validate({
        // form.submit();
     }
 });
+
+
+
+const player = new Plyr('#video_player',{
+    disableContextMenu:false,
+    blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
+    controls: [
+        'play-large',
+        'restart',
+        'play',
+        'progress',
+        'current-time',
+        'mute',
+        'volume',
+        'airplay',
+        'fullscreen',
+    ],
+});
+
+
+
+
+
+jQuery(function ($) {
+    'use strict'
+    var supportsAudio = !!document.createElement('audio').canPlayType;
+    if (supportsAudio) {
+        var player = new Plyr('#player', {
+            controls: [
+                'restart',
+                'play',
+                'progress',
+                'current-time',
+                'duration',
+                'mute',
+                'volume',
+            ]
+        });
+
+        var index = 1,
+            playing = false,
+            plist_title = $('#play-list-title'),
+            plist_artist = $('#play-list-artist'),
+            trackCount = $('#play-list').attr('data-track-count'),
+            audio = $('#player').on('play', function () {
+                console.log('play');
+                playing = true;
+                //npAction.text('Now Playing...');
+            }).on('pause', function () {
+                console.log('pause');
+                playing = false;
+                //npAction.text('Paused...');
+            }).on('ended', function () {
+               /* audio.pause();
+                index = 1;
+                loadTrack(index);*/
+
+                //npAction.text('Paused...');
+                if ((index + 1) < trackCount) {
+                    index++;
+                    loadTrack(index);
+                    audio.play();
+                } else {
+                    audio.pause();
+                    index = 1;
+                    loadTrack(index);
+                }
+            }).get(0),
+            li = $('#play-list li>button').on('click', function () {
+                var id = parseInt($(this).parent().data('index'));
+                if (id !== index) {
+                    playTrack(id);
+                }
+            }),
+            loadTrack = function (id) {
+                var current_track = $('[data-index="'+id+'"]');
+                $('#play-list li').removeClass('bg-[#34445d]/10');
+                current_track.addClass('bg-[#34445d]/10');
+                plist_title.text(current_track.data('title'));
+                plist_artist.text(current_track.data('author'));
+                index = id;
+                audio.src = current_track.data('file');
+            },
+            playTrack = function (id) {
+                loadTrack(id);
+                audio.play();
+            };
+        loadTrack(index);
+    } else {
+        $('#player_container').append('<div class="flex p-4 mb-4 bg-yellow-100 border-t-4 border-yellow-500 dark:bg-yellow-200" role="alert"><div class="ml-3 text-sm font-medium text-yellow-700">Ваш браузер не поддерживает HTML audio</div></div>\n');
+    }
+});
+
+
+

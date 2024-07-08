@@ -27,6 +27,8 @@
     "jsdom": "^24.0.0",
     "magnific-popup": "^1.1.0",
     "nestable2": "^1.6.0",
+    "plupload": "^2.3.9",
+    "plyr": "^3.7.8",
     "sweetalert2": "^11.4.8",
     "tabbedcontent": "^1.7.0"
   }

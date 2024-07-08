@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.0.2, created on 2024-05-02 16:43:19
+/* Smarty version 5.0.2, created on 2024-07-03 19:02:04
   from 'file:default/main.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.2',
-  'unifunc' => 'content_663398776e4187_70617148',
+  'unifunc' => 'content_668575fc45eb79_97541194',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -22,7 +22,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:default/footer.tpl' => 1,
   ),
 ))) {
-function content_663398776e4187_70617148 (\Smarty\Template $_smarty_tpl) {
+function content_668575fc45eb79_97541194 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\app\\default';
 $_smarty_tpl->renderSubTemplate("file:default/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);
 $_smarty_tpl->renderSubTemplate($_smarty_tpl->getValue('page'), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), (int) 0, $_smarty_current_dir);

@@ -72,13 +72,6 @@
                             </div>
                         </div>
                     </div>
-                    {literal}
-                        <script>
-                            document.addEventListener("DOMContentLoaded", function() {
-                                $('.cropme').simpleCropper();
-                            });
-                        </script>
-                    {/literal}
 
                     <div class="col-span-3">
                         <div class="mb-0">

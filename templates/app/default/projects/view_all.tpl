@@ -29,7 +29,7 @@
 					<a href="/projects/{$item.url}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
 						<div class="relative h-80 overflow-hidden rounded-lg">
 							<img class="absolute inset-0 h-full w-full object-cover" src="{$item.picture}" alt="">
-							<div class="absolute top-0 right-0 bg-[#34445C] text-white px-3 py-0.5 m-2 rounded-md text-xs">В РАБОТЕ</div>
+							<div class="absolute top-0 right-0 {if $item.id_item is odd}bg-blue-500{else}bg-[#34445C]{/if} text-white px-3 py-0.5 m-2 rounded-md text-xs">{if $item.id_item is odd}В РАБОТЕ{else}ЗАВЕРШЕН{/if}</div>
 
 						</div>
 						<div class="py-2 px-4 border-b *:text-[#34445C] h-24">

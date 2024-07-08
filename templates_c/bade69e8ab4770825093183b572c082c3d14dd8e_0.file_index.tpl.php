@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.0.2, created on 2024-04-22 12:38:06
+/* Smarty version 5.0.2, created on 2024-07-06 18:32:09
   from 'file:templates/admin/index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.2',
-  'unifunc' => 'content_66262ffe6b4ae1_75774102',
+  'unifunc' => 'content_66896379d38738_85466944',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_66262ffe6b4ae1_75774102 (\Smarty\Template $_smarty_tpl) {
+function content_66896379d38738_85466944 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\admin';
 ?><div class="flex flex-wrap">
 	<div class="flex items-center py-4 w-full">

@@ -47,6 +47,8 @@ $aladesign->caching = false; // Кэш true/false
 $aladesign->cache_lifetime = 0; // Время кэша в секундах
 $aladesign->setTemplateDir(['main' => './templates/app', 'admin' => './templates/admin']);
 $aladesign->registerPlugin(Smarty::PLUGIN_FUNCTION, 'url', 'smarty_tag_url');
+$aladesign->registerPlugin(Smarty::PLUGIN_FUNCTION, 'bgcolor', 'smarty_tag_bgcolor');
+$aladesign->registerPlugin(Smarty::PLUGIN_MODIFIER, 'json_decode', 'smarty_modifier_json_decode');
 
 
 // Основные характеристики сайта

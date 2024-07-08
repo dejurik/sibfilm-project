@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.0.2, created on 2024-05-02 16:43:19
+/* Smarty version 5.0.2, created on 2024-07-03 19:02:04
   from 'file:default/sliders/index_sliders.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.2',
-  'unifunc' => 'content_663398779b5570_42317610',
+  'unifunc' => 'content_668575fc5da349_03436848',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_663398779b5570_42317610 (\Smarty\Template $_smarty_tpl) {
+function content_668575fc5da349_03436848 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'D:\\OpenServer\\domains\\sibfilm.local\\templates\\app\\default\\sliders';
 if ($_smarty_tpl->getValue('sliders')) {?>
 	<div class="sm:px-16 px-6 flex justify-center items-center bg-gradient-to-b from-[#cccccc]/5">

@@ -95,7 +95,7 @@
                         <a href="./services.html" class="">
                             <div class="bg-[#f3f3f1] h-44 rounded-lg mb-4 relative block">
                                 <div class="absolute bottom-7 left-7 *:text-[#34445d]">
-                                    <div class="text-2xl font-bold underline max-md:text-base">Мои проекты</div>
+                                    <div class="text-2xl font-bold underline max-md:text-base">Мой плейлист</div>
                                     <div class="text-sm hidden lg:block">Описание данного раздела в 3 словах</div>
                                 </div>
                             </div>

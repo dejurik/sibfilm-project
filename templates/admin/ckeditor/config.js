@@ -21,4 +21,5 @@ CKEDITOR.editorConfig = function( config ) {
 	config.removeButtons = 'Subscript,Superscript';
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 	config.contentsCss = '/templates/css/output.css';
+	config.versionCheck = false;
 };

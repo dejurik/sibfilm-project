@@ -27,6 +27,9 @@ RewriteRule ^users/register/$ /?mod=users&act=register [L]
 RewriteRule ^projects?$ /?mod=projects&act=view_all [L,QSA]
 RewriteRule ^projects/([^/]*)$ /?mod=projects&act=view&url=$1 [L]
 
-# Каталог
-RewriteRule ^projects?$ /?mod=projects&act=view_all [L,QSA]
-RewriteRule ^projects/([^/]*)$ /?mod=projects&act=view&url=$1 [L]
+# Магазин
+RewriteRule ^shop?$ /?mod=shop&act=index [L,QSA]
+RewriteRule ^shop/([^/]*)?$ /?mod=shop&act=view_category&url=$1 [L,QSA]
+RewriteRule ^shop/view/([^/]*)?$ /?mod=shop&act=product&id=$1 [L,QSA]
+
+# коментарий

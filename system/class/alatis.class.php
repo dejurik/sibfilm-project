@@ -21,24 +21,25 @@ class Alatis {
 		'feedback'		=> 'feedback',
 		'notify'		=> 'notify',
 		'projects'		=> 'projects',
-		/*
+		'features'		=> 'features',
+		'staffs'		=> 'staffs',
+		'categories'	=> 'categories',
+		'products'		=> 'products',
+		'variants'		=> 'variants',
 		'images'		=> 'images',
+		'files'			=> 'files',
+		/*
+
 
 		'admins'		=> 'admins',
 
 		'advertising'	=> 'advertising',
-		'categories'	=> 'categories',
-		'features'		=> 'features',
-		'collections'	=> 'collections',
-		'brands'		=> 'brands',
-		'products'		=> 'products',
 		'variants'		=> 'variants',
 		'money'			=> 'money',
 		'cart'			=> 'cart',
 		'delivery'		=> 'delivery',
 		'orders'		=> 'orders',
 		'payment'		=> 'payment',
-		'feedback'		=> 'feedback',
 		'notify'			=> 'notify',*/
 		//'phpmailer'     	=> 'phpmailer'
 		/*
