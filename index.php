@@ -43,7 +43,7 @@ class Index extends Alatis
 					$this->template     = &self::$view_instance->template;
 					$this->main_menu   	= &self::$view_instance->main_menu;
 					$this->footer_menu  = &self::$view_instance->footer_menu;
-					//$this->group       		= &self::$view_instance->group;
+					$this->user         = &self::$view_instance->user;
 
 				} else {
 
@@ -54,6 +54,15 @@ class Index extends Alatis
 					$this->aladesign->assign("main_menu", $this->main_menu);
 					$this->aladesign->assign("footer_menu", $this->footer_menu);
 					$this->aladesign->assign("template", $this->template);
+
+					if(isset($_SESSION['user_id'])) {
+						$user = $this->users->Get($_SESSION['user_id'])->fields;
+						if($user && $user['enabled']) {
+							$this->user = $user;
+							$this->aladesign->assign("user", $this->user);
+							dd($this->user);
+						}
+					}
 
 					// Настраиваем плагины для смарти
 					$this->aladesign->registerPlugin('function', 'api', array($this, 'api_plugin'));
